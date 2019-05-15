@@ -8,8 +8,8 @@ import java.time.LocalDate;
 
 public class Manager extends Worker {
 
-    public Manager(String login, String password, String firstName, String lastName, Address address, LocalDate birthDate, WorkForm workForm) {
-        super(login, password, firstName, lastName, address, birthDate, workForm);
+    public Manager(String login, String password, String firstName, String lastName, String city, String street, LocalDate birthDate, WorkForm workForm) {
+        super(login, password, firstName, lastName, city, street, birthDate, workForm);
     }
 
     public Manager(String login, String password, String firstName, String lastName, LocalDate birthDate, WorkForm workForm) {

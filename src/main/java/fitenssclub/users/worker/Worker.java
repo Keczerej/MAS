@@ -12,8 +12,8 @@ public abstract class Worker extends User implements WorkFormInterface {
 
     private WorkForm workForm;
 
-    public Worker(String login, String password, String firstName, String lastName, Address address, LocalDate birthDate, WorkForm workForm) {
-        super(login, password, firstName, lastName, address, birthDate);
+    public Worker(String login, String password, String firstName, String lastName,  String city, String street, LocalDate birthDate, WorkForm workForm) {
+        super(login, password, firstName, lastName, city, street, birthDate);
         this.workForm = workForm;
     }
 

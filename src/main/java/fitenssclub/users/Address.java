@@ -4,16 +4,18 @@ import java.io.Serializable;
 
 public class Address implements Serializable {
 
+    private final User user;
     private String city;
-    private String address;
+    private String street;
 
-    public Address(String city, String address) {
+    Address(String city, String address, User user) {
         this.city = city;
-        this.address = address;
+        this.street = address;
+        this.user = user;
     }
 
     public String getAddress() {
-        return address;
+        return street;
     }
 
     public String getCity() {
@@ -24,7 +26,11 @@ public class Address implements Serializable {
     public String toString() {
         return "Address{" +
                 "city='" + city + '\'' +
-                ", address='" + address + '\'' +
+                ", street='" + street + '\'' +
                 '}';
+    }
+
+    public User getUser() {
+        return user;
     }
 }

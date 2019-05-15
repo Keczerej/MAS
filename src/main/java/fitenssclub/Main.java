@@ -27,7 +27,8 @@ public class Main {
                 "trudneHaslo",
                 "Piotr",
                 "Jereczek",
-                new Address("Legionowo", "Ul. Krasnoludzka 32A"),
+               "Legionowo",
+                "Ul. Krasnoludzka 32A",
                 LocalDate.parse("16-07-1976", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         );
 

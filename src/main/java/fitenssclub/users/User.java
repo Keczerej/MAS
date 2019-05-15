@@ -13,13 +13,13 @@ public abstract class User implements Serializable {
     private String password;
     private String firstName;
     private String lastName;
-    private Address address;
+    private List<Address> addresses = new ArrayList<>(); //Asocjacja - kompozycja
     private LocalDate birthDate;
     private transient Integer age;
 
-    public User(String login, String password, String firstName, String lastName, Address address, LocalDate birthDate) {
+    public User(String login, String password, String firstName, String lastName, String city, String street, LocalDate birthDate) {
         this(login, password, firstName, lastName, birthDate);
-        this.address = address;
+        this.addresses.add(new Address(city, street, this));
     }
 
     public User(String login, String password, String firstName, String lastName, LocalDate birthDate) {
@@ -36,8 +36,8 @@ public abstract class User implements Serializable {
         User.users.add(this);
     }
 
-    public Optional<Address> getAddress() {
-        return Optional.of(this.address);
+    public List<Address> getAddresses() {
+        return this.addresses;
     }
 
     public String getLogin() {
@@ -72,8 +72,11 @@ public abstract class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void addAddress(String city, String street) {
+        this.addresses.add(new Address(city, street, this));
+    }
+    public void removeAddress(Address address) {
+        this.addresses.remove(address);
     }
 
     public Integer getAge() {
@@ -106,7 +109,7 @@ public abstract class User implements Serializable {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", address=" + address +
+                ", addresses=" + addresses +
                 ", birthDate=" + birthDate +
                 ", age=" + getAge() +
                 '}';
