@@ -1,6 +1,11 @@
 package fitenssclub.users.worker.form;
 
-public class UoP implements WorkForm {
+import java.io.Serializable;
+
+public class UoP extends WorkForm implements Serializable {
+
+    UoP(){}
+
     @Override
     public String getWorkFormName() {
         return "Umowa o pracę";

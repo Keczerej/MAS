@@ -3,11 +3,12 @@ package fitenssclub.users.worker;
 import fitenssclub.users.Address;
 import fitenssclub.users.User;
 import fitenssclub.users.worker.form.WorkForm;
+import fitenssclub.users.worker.form.WorkFormInterface;
 
 import java.time.LocalDate;
 
 //TODO: Dynamizm -> zmiana roli
-public abstract class Worker extends User implements WorkForm {
+public abstract class Worker extends User implements WorkFormInterface {
 
     private WorkForm workForm;
 

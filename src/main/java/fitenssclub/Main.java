@@ -1,7 +1,11 @@
 package fitenssclub;
 
+import fitenssclub.activities.Activity;
 import fitenssclub.users.Address;
 import fitenssclub.users.User;
+import fitenssclub.users.client.Client;
+import fitenssclub.users.worker.form.WorkForm;
+import fitenssclub.users.worker.roles.Manager;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -17,7 +21,7 @@ public class Main {
             User.readFromFile(fileName);
 
 
-        new User(
+        new Client(
                 "keczerej",
                 "trudneHaslo",
                 "Piotr",
@@ -26,12 +30,13 @@ public class Main {
                 LocalDate.parse("16-07-1976", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         );
 
-        new User(
+        new Manager(
                 "a.kowal",
                 "trudneHasl2o",
                 "Adam",
                 "Kowalski",
-                LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
+                LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                WorkForm.B2B
         );
 
         User.writeToFile(fileName);
@@ -39,6 +44,15 @@ public class Main {
         User.getUsers()
                 .iterator()
                 .forEachRemaining(System.out::println);
+
+
+        Activity joga = new Activity("joga");
+        joga.addEquipment("Kula");
+        joga.addEquipment("Hantle"); //pomyłka
+        joga.getEquipmentList().get(1).removeFromEquipmentList(); //usuwamy pomyłkę
+
+        System.out.println(joga);
+
     }
 
 }

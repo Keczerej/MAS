@@ -1,6 +1,11 @@
 package fitenssclub.users.worker.form;
 
-public class B2B implements WorkForm{
+import java.io.Serializable;
+
+public class B2B extends WorkForm implements Serializable {
+
+    B2B(){}
+
     @Override
     public String getWorkFormName() {
         return "Business2Business";
