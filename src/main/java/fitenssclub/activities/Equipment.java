@@ -1,17 +1,20 @@
 package fitenssclub.activities;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Equipment {
 
     private String name;
-    private Activity activity;
+    protected Set<Activity> activities = new HashSet<>();
 
-    protected Equipment(String name, Activity activity) {
+    public Equipment(String name) {
         this.name = name;
-        this.activity = activity;
     }
 
-    public void removeFromEquipmentList() {
-        this.activity.equipmentList.remove(this);
+    public ArrayList<Activity> getActivities() {
+        return new ArrayList<>(activities);
     }
 
     public String getName() {

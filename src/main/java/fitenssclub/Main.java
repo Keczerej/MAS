@@ -1,6 +1,7 @@
 package fitenssclub;
 
 import fitenssclub.activities.Activity;
+import fitenssclub.activities.Equipment;
 import fitenssclub.users.Address;
 import fitenssclub.users.User;
 import fitenssclub.users.client.Client;
@@ -47,11 +48,16 @@ public class Main {
 
 
         Activity joga = new Activity("joga");
-        joga.addEquipment("Kula");
-        joga.addEquipment("Hantle"); //pomyłka
-        joga.getEquipmentList().get(1).removeFromEquipmentList(); //usuwamy pomyłkę
-
+        Equipment kula = new Equipment("kula");
+        Equipment hantle = new Equipment("hantle");
+        joga.addEquipment(kula);
+        joga.addEquipment(hantle); //pomyłka
+        System.out.println("[Joga] Przed pomyłką");
         System.out.println(joga);
+        joga.getEquipmentList().remove(hantle); //usuwamy pomyłkę
+        System.out.println("[Joga] Po pomyłce");
+        System.out.println(joga);
+
 
     }
 
