@@ -1,4 +1,4 @@
-package fitenssclub;
+package fitenssclub.users;
 
 import java.io.Serializable;
 

@@ -1,20 +1,21 @@
-package fitenssclub;
+package fitenssclub.users;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-public class User implements Serializable {
+public abstract class User implements Serializable {
 
     private static int MIN_AGE = 16;
     private String login;
+
     private String password;
     private String firstName;
     private String lastName;
-    private Address address; //Atrybut opcjonalny, Atrybut żłożony
+    private Address address;
     private LocalDate birthDate;
-    private transient Integer age; //Atrybut pochodny, trwałość
+    private transient Integer age;
 
     public User(String login, String password, String firstName, String lastName, Address address, LocalDate birthDate) {
         this(login, password, firstName, lastName, birthDate);
@@ -59,6 +60,22 @@ public class User implements Serializable {
         return birthDate;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public Integer getAge() {
         if (this.age == null)
             calculateAndAssignAge();
@@ -69,7 +86,7 @@ public class User implements Serializable {
         this.age = (int) ChronoUnit.YEARS.between(this.birthDate, LocalDate.now());
     }
 
-    @Override //przesłonięcie, przeciążenie
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -77,12 +94,12 @@ public class User implements Serializable {
         return login.equals(user.login);
     }
 
-    @Override //przesłonięcie, przeciążenie
+    @Override
     public int hashCode() {
         return Objects.hash(login);
     }
 
-    @Override //przesłonięcie, przeciążenie
+    @Override
     public String toString() {
         return "User{" +
                 "login='" + login + '\'' +
