@@ -3,15 +3,16 @@ package fitenssclub;
 import fitenssclub.activities.Activity;
 import fitenssclub.activities.exercise.Equipment;
 import fitenssclub.activities.exercise.Exercise;
-import fitenssclub.activities.exercise.Relax;
 import fitenssclub.activities.exercise.Strength;
 import fitenssclub.users.User;
 import fitenssclub.users.client.Client;
 import fitenssclub.users.worker.form.WorkForm;
 import fitenssclub.users.worker.roles.Manager;
+import fitenssclub.users.worker.roles.Trainer;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Main {
@@ -24,7 +25,7 @@ public class Main {
             User.readFromFile(fileName);
 
 
-        new Client(
+        Client client = new Client(
                 "keczerej",
                 "trudneHaslo",
                 "Piotr",
@@ -34,7 +35,7 @@ public class Main {
                 LocalDate.parse("16-07-1976", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         );
 
-        new Manager(
+        Trainer trainer = new Trainer(
                 "a.kowal",
                 "trudneHasl2o",
                 "Adam",
@@ -42,6 +43,12 @@ public class Main {
                 LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
                 WorkForm.B2B
         );
+
+        Activity activity = new Activity("Joga", LocalDateTime.now(), trainer);
+        activity.addContributors(client);
+
+        System.out.println(activity);
+        System.out.println(client);
 
         User.writeToFile(fileName);
 
@@ -60,6 +67,7 @@ public class Main {
         joga.getEquipmentList().remove(hantle); //usuwamy pomyłkę
         System.out.println("[Joga] Po pomyłce");
         System.out.println(joga);
+
 
 
     }
