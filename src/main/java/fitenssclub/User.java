@@ -7,6 +7,7 @@ import java.util.*;
 
 public class User implements Serializable {
 
+    private static int MIN_AGE = 16;
     private String login;
     private String password;
     private String firstName;
@@ -27,11 +28,11 @@ public class User implements Serializable {
         this.lastName = lastName;
         this.birthDate = birthDate;
         calculateAndAssignAge();
-        User.users.remove(this);
-        User.users.add(this);
-        if (this.age < 16) {
+        if (this.age < MIN_AGE) {
             throw new IllegalArgumentException("Użytkownik powinien mieć co najmniej 16 lat");
         }
+        User.users.remove(this);
+        User.users.add(this);
     }
 
     public Optional<Address> getAddress() {
@@ -96,7 +97,13 @@ public class User implements Serializable {
 
     public static void readFromFile(String filePath) {
         try {
-            User.users.addAll(((List<User>) new ObjectInputStream(new FileInputStream(filePath)).readObject()));
+            User.users.addAll(
+                    (
+                            (List<User>) new ObjectInputStream(
+                                    new FileInputStream(filePath)
+                            ).readObject()
+                    )
+            );
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -104,17 +111,19 @@ public class User implements Serializable {
 
     public static void writeToFile(String filePath) {
         try {
-            new ObjectOutputStream(new FileOutputStream(filePath)).writeObject(new ArrayList<>(User.users));
+            new ObjectOutputStream(
+                    new FileOutputStream(filePath)
+            ).writeObject(new ArrayList<>(User.users));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static Set<User> users = new HashSet<>(); //Ekstencja, Atrybut klasowy, Atrybut powtarzalny
+    private static Set<User> users = new HashSet<>(); //Ekstensja,
 
     public static Set<User> getUsers() { //Metoda klasowa
         return new HashSet<>(User.users);
-    }
+    } //Metoda klasowa,
 
 }
 

@@ -13,28 +13,29 @@ public class Main {
         if(new File(fileName).exists())
             User.readFromFile(fileName);
 
-        //Tworzenie uzytkownika 1
+
         new User(
                 "keczerej",
+                "trudneHaslo",
                 "Piotr",
                 "Jereczek",
-                "trudneHaslo",
                 new Address("Legionowo", "Ul. Krasnoludzka 32A"),
                 LocalDate.parse("16-07-1976", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         );
 
-        //Tworzenie uzytkownika 2
         new User(
                 "a.kowal",
+                "trudneHasl2o",
                 "Adam",
                 "Kowalski",
-                "trudneHasl2o",
-                LocalDate.parse("16-05-1999", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
+                LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         );
 
         User.writeToFile(fileName);
 
-        User.getUsers().iterator().forEachRemaining(System.out::println);
+        User.getUsers()
+                .iterator()
+                .forEachRemaining(System.out::println);
     }
 
 }
