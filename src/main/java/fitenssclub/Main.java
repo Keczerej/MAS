@@ -1,16 +1,14 @@
 package fitenssclub;
 
 import fitenssclub.activities.Activity;
-import fitenssclub.activities.exercise.Equipment;
-import fitenssclub.activities.exercise.Exercise;
-import fitenssclub.activities.exercise.Strength;
+import fitenssclub.activities.Equipment;
+import fitenssclub.activities.Exercise;
+import fitenssclub.activities.Strength;
 import fitenssclub.users.User;
 import fitenssclub.users.client.Client;
 import fitenssclub.users.worker.form.WorkForm;
-import fitenssclub.users.worker.roles.Manager;
 import fitenssclub.users.worker.roles.Trainer;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,13 +16,24 @@ import java.time.format.DateTimeFormatter;
 public class Main {
 
     public static void main(String[] argv) {
+        if(argv[0].equals("write")){
+            createDatabase(argv[1]);
+        }
+        if(argv[0].equals("read")){
+            readFromDatabase(argv[1]);
+        }
+    }
 
-        String fileName = "users.fc";
+    private static void readFromDatabase(String fileName) {
+        System.out.println("## Czytam uzytkonikow z pliku " + fileName + "\n\n");
+        User.readFromFile(fileName);
+        User.getUsers()
+                .iterator()
+                .forEachRemaining(System.out::println);
+    }
 
-        if(new File(fileName).exists())
-            User.readFromFile(fileName);
-
-
+    private static void createDatabase(String fileName) {
+        System.out.println("## Dodaję dane do pliku " + fileName + "\n\n");
         Client client = new Client(
                 "keczerej",
                 "trudneHaslo",
@@ -34,6 +43,8 @@ public class Main {
                 "Ul. Krasnoludzka 32A",
                 LocalDate.parse("16-07-1976", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         );
+        System.out.println("1. Dodany klient");
+        System.out.println(client);
 
         Trainer trainer = new Trainer(
                 "a.kowal",
@@ -43,33 +54,25 @@ public class Main {
                 LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
                 WorkForm.B2B
         );
+        System.out.println("\n2. Dodany trener");
+        System.out.println(trainer);
 
         Activity activity = new Activity("Joga", LocalDateTime.now(), trainer);
-        activity.addContributors(client);
-
-        System.out.println(activity);
-        System.out.println(client);
-
-        User.writeToFile(fileName);
-
-        User.getUsers()
-                .iterator()
-                .forEachRemaining(System.out::println);
-
-
         Exercise joga = new Strength("pompki");
         Equipment kula = new Equipment("kula");
         Equipment hantle = new Equipment("hantle");
         joga.addEquipment(kula);
-        joga.addEquipment(hantle); //pomyłka
-        System.out.println("[Joga] Przed pomyłką");
-        System.out.println(joga);
-        joga.getEquipmentList().remove(hantle); //usuwamy pomyłkę
-        System.out.println("[Joga] Po pomyłce");
-        System.out.println(joga);
+        joga.addEquipment(hantle);
+        activity.addExercise(joga, 10);
+        activity.addContributors(client);
+        System.out.println("\n3. Dodane zajecia");
+        System.out.println(activity);
+        System.out.println("\n3a. Czas zajęć");
+        System.out.println(activity.getExercisesTime() + " minut");
+        System.out.println("\n4. Klient po dodaniu do zajęć");
+        System.out.println(client);
 
-
-
+        User.writeToFile(fileName);
     }
 
 }

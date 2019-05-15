@@ -30,7 +30,7 @@ public class Client extends User {
     @Override
     public String toString() {
         return super.toString() +  " -> Client{" +
-                "activityList=" + activityList +
+                "\n\tactivityList=" + activityList +
                 '}';
     }
 }

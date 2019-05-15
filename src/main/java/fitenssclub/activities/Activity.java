@@ -14,6 +14,7 @@ public class Activity implements Serializable {
     private Trainer trainer;
 
     private Map<String, Client> contributors = new HashMap<>();
+    List<ActivityToExercise> exercises = new ArrayList<>(); //Asocjacja z atrybutem
 
     public Activity(String name, LocalDateTime date, Trainer trainer) {
         this.name = name;
@@ -48,6 +49,18 @@ public class Activity implements Serializable {
         contributor.addActivity(this);
     }
 
+    public void addExercise(Exercise exercise, long minutes){
+        new ActivityToExercise(exercise, this, minutes);
+    }
+
+    public void removeExercise(Exercise exercise){
+        this.exercises.forEach(activityToExercise -> {
+            if(activityToExercise.getExercise() == exercise) {
+                activityToExercise.removeAssocation();
+            }
+        });
+    }
+
     //asocjacja z klasyfikatorem
     public Optional<Client> getContributor(String login){
         return Optional.ofNullable(this.contributors.get(login));
@@ -65,6 +78,20 @@ public class Activity implements Serializable {
 
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
+    }
+
+    public long getExercisesTime() {
+        return this.exercises.stream().mapToLong(ActivityToExercise::getMinutesForExercise).sum();
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "name='" + name + '\'' +
+                ", date=" + date +
+                ", \n\t\ttrainer=" + trainer +
+                ", \n\t\texercises=" + exercises +
+                '}';
     }
 }
 

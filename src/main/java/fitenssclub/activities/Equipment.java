@@ -1,10 +1,11 @@
-package fitenssclub.activities.exercise;
+package fitenssclub.activities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Equipment {
+public class Equipment implements Serializable {
 
     private String name;
     protected Set<Exercise> exercises = new HashSet<>();
@@ -23,5 +24,12 @@ public class Equipment {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

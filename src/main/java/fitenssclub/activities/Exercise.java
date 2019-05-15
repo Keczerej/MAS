@@ -1,16 +1,15 @@
-package fitenssclub.activities.exercise;
+package fitenssclub.activities;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
 
-abstract public class Exercise {
+abstract public class Exercise  implements Serializable {
 
     //Asocjacja zwyczajna
     Set<Equipment> equipmentList = new HashSet<>();
 
     private String name;
+    List<ActivityToExercise> activities = new ArrayList<>();
 
     public Exercise(String name) {
         this.name = name;
@@ -38,4 +37,11 @@ abstract public class Exercise {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Exercise{" +
+                "equipmentList=" + equipmentList +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
