@@ -1,4 +1,4 @@
-package fitenssclub.activities;
+package fitenssclub.activities.exercise;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -7,14 +7,14 @@ import java.util.Set;
 public class Equipment {
 
     private String name;
-    protected Set<Activity> activities = new HashSet<>();
+    protected Set<Exercise> exercises = new HashSet<>();
 
     public Equipment(String name) {
         this.name = name;
     }
 
-    public ArrayList<Activity> getActivities() {
-        return new ArrayList<>(activities);
+    public ArrayList<Exercise> getExercises() {
+        return new ArrayList<>(exercises);
     }
 
     public String getName() {

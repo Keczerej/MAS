@@ -1,8 +1,10 @@
 package fitenssclub;
 
 import fitenssclub.activities.Activity;
-import fitenssclub.activities.Equipment;
-import fitenssclub.users.Address;
+import fitenssclub.activities.exercise.Equipment;
+import fitenssclub.activities.exercise.Exercise;
+import fitenssclub.activities.exercise.Relax;
+import fitenssclub.activities.exercise.Strength;
 import fitenssclub.users.User;
 import fitenssclub.users.client.Client;
 import fitenssclub.users.worker.form.WorkForm;
@@ -48,7 +50,7 @@ public class Main {
                 .forEachRemaining(System.out::println);
 
 
-        Activity joga = new Activity("joga");
+        Exercise joga = new Strength("pompki");
         Equipment kula = new Equipment("kula");
         Equipment hantle = new Equipment("hantle");
         joga.addEquipment(kula);
