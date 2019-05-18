@@ -42,7 +42,7 @@ public class Main {
                "Legionowo",
                 "Ul. Krasnoludzka 32A",
                 LocalDate.parse("16-07-1976", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
-        );
+        );//Kompozycja
         System.out.println("1. Dodany klient");
         System.out.println(client);
 
@@ -61,10 +61,10 @@ public class Main {
         Exercise joga = new Strength("pompki");
         Equipment kula = new Equipment("kula");
         Equipment hantle = new Equipment("hantle");
-        joga.addEquipment(kula);
+        joga.addEquipment(kula); //Zwykła
         joga.addEquipment(hantle);
-        activity.addExercise(joga, 10);
-        activity.addContributors(client);
+        activity.addExercise(joga, 10); //Z atrybutem
+        activity.addContributors(client); //Kwalifikowana
         System.out.println("\n3. Dodane zajecia");
         System.out.println(activity);
         System.out.println("\n3a. Czas zajęć");

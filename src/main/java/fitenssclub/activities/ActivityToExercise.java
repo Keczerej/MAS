@@ -21,10 +21,6 @@ class ActivityToExercise implements Serializable {
         return exercise;
     }
 
-    public void setExercise(Exercise exercise) {
-        this.exercise = exercise;
-    }
-
     public Activity getActivity() {
         return activity;
     }

@@ -19,7 +19,7 @@ public abstract class User implements Serializable {
 
     public User(String login, String password, String firstName, String lastName, String city, String street, LocalDate birthDate) {
         this(login, password, firstName, lastName, birthDate);
-        this.addresses.add(new Address(city, street, this));
+        this.addAddress(city, street);
     }
 
     public User(String login, String password, String firstName, String lastName, LocalDate birthDate) {
@@ -75,6 +75,7 @@ public abstract class User implements Serializable {
     public void addAddress(String city, String street) {
         this.addresses.add(new Address(city, street, this));
     }
+
     public void removeAddress(Address address) {
         this.addresses.remove(address);
     }
