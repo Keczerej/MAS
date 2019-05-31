@@ -8,7 +8,7 @@ public class Exercise implements Serializable {
     //Asocjacja zwyczajna
     private Set<Equipment> equipmentList = new HashSet<>();
 
-    //MP03 Overlapping
+    //MP03 2. Overlapping
     private EnumSet<ExerciseType> types;
 
     private String name;

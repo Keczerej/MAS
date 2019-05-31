@@ -10,4 +10,9 @@ public class B2B extends WorkForm implements Serializable {
     public String getWorkFormName() {
         return "Business2Business";
     }
+
+    @Override
+    public double getSalaryScale() {
+        return 1.3;
+    }
 }

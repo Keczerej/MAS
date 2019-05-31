@@ -88,6 +88,12 @@ public class Main {
         System.out.println("Płaca: " + changedTrainerToManager.getSalary());
         System.out.println("Forma zatrudnienia: " + changedTrainerToManager.getWorkFormName());
 
+        System.out.println("\n7.Trener po zmianie formy zatrudnienia na B2B na niepełny etat.");
+        changedTrainerToManager.setWorkForm(WorkForm.PartTimeB2B);
+        System.out.println(changedTrainerToManager);
+        System.out.println("Płaca: " + changedTrainerToManager.getSalary());
+        System.out.println("Forma zatrudnienia: " + changedTrainerToManager.getWorkFormName());
+
         User.writeToFile(fileName);
     }
 

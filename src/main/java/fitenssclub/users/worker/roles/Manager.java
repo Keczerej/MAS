@@ -18,10 +18,7 @@ public class Manager extends Worker {
 
     @Override
     public int getSalary() {
-        double scale = 1;
-        if(this.getWorkForm() == WorkForm.B2B) {
-            scale = 1.3;
-        }
+        double scale = this.getWorkForm().getSalaryScale();
         return (int)(4500 * scale);
     }
 }

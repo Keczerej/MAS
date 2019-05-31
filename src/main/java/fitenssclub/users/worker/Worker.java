@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-//MP03 Dziedziczenie po użytkowniku
 public abstract class Worker extends User implements WorkFormInterface {
 
     private WorkForm workForm;
@@ -29,7 +28,7 @@ public abstract class Worker extends User implements WorkFormInterface {
         this.workForm = workForm;
     }
 
-    //MP03 Wieloaspektowość
+    //MP03 4. Wieloaspektowość
     public WorkForm getWorkForm() {
         return workForm;
     }
@@ -38,10 +37,10 @@ public abstract class Worker extends User implements WorkFormInterface {
         this.workForm = workForm;
     }
 
-    //MP03 Polimorfizm
+    //MP03 1. Polimorfizm
     abstract public int getSalary();
 
-    //MP03 Dynamizm -> zmiana roli
+    //MP03 5. Dynamizm -> zmiana roli
     public <T extends Worker> T changeRole(Class<T> role) {
         if(this.getClass() == role){
             return (T) this;
@@ -99,7 +98,6 @@ public abstract class Worker extends User implements WorkFormInterface {
     }
 
     @Override
-    //MP03 Polimorfizm
     public String getWorkFormName(){
         return this.workForm.getWorkFormName();
     }

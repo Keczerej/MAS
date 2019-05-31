@@ -10,4 +10,9 @@ public class UoP extends WorkForm implements Serializable {
     public String getWorkFormName() {
         return "Umowa o pracę";
     }
+
+    @Override
+    public double getSalaryScale() {
+        return 1;
+    }
 }
