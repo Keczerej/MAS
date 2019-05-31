@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+//MP03 - Klasa Abstrakcyjna
 public abstract class User implements Serializable {
 
     private static int MIN_AGE = 16;

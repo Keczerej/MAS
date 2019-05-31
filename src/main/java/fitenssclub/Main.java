@@ -7,6 +7,7 @@ import fitenssclub.activities.Strength;
 import fitenssclub.users.User;
 import fitenssclub.users.client.Client;
 import fitenssclub.users.worker.form.WorkForm;
+import fitenssclub.users.worker.roles.Manager;
 import fitenssclub.users.worker.roles.Trainer;
 
 import java.time.LocalDate;
@@ -56,6 +57,7 @@ public class Main {
         );
         System.out.println("\n2. Dodany trener");
         System.out.println(trainer);
+        System.out.println("Płaca: " + trainer.getSalary());
 
         Activity activity = new Activity("Joga", LocalDateTime.now(), trainer);
         Exercise joga = new Strength("pompki");
@@ -71,6 +73,13 @@ public class Main {
         System.out.println(activity.getExercisesTime() + " minut");
         System.out.println("\n4. Klient po dodaniu do zajęć");
         System.out.println(client);
+
+        System.out.println("\n5.Trener po zmianie roli na menadżera");
+        Manager changedTrainerToManager = trainer.changeRole(Manager.class);
+        System.out.println(changedTrainerToManager);
+        System.out.println("Płaca: " + changedTrainerToManager.getSalary());
+
+
 
         User.writeToFile(fileName);
     }

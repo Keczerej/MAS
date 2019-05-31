@@ -20,6 +20,7 @@ public class Activity implements Serializable {
         this.name = name;
         this.date = date;
         this.trainer = trainer;
+        activities.add(this);
     }
 
     public String getName() {
@@ -93,5 +94,11 @@ public class Activity implements Serializable {
                 ", \n\t\texercises=" + exercises +
                 '}';
     }
+
+    public static List<Activity> getActivities() {
+        return activities;
+    }
+
+    private static List<Activity> activities = new ArrayList<Activity>();
 }
 
