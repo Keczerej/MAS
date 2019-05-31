@@ -3,16 +3,25 @@ package fitenssclub.activities;
 import java.io.Serializable;
 import java.util.*;
 
-abstract public class Exercise  implements Serializable {
+public class Exercise implements Serializable {
 
     //Asocjacja zwyczajna
-    Set<Equipment> equipmentList = new HashSet<>();
+    private Set<Equipment> equipmentList = new HashSet<>();
+
+    //MP03 Overlapping
+    private EnumSet<ExerciseType> types;
 
     private String name;
     List<ActivityToExercise> activities = new ArrayList<>();
 
-    public Exercise(String name) {
+    public Exercise(String name, EnumSet<ExerciseType> types) {
         this.name = name;
+        if(types.size() == 0) throw new IllegalArgumentException("Define at least one type of exercise");
+        this.types = types;
+    }
+
+    public EnumSet<ExerciseType> getTypes() {
+        return types;
     }
 
     public List<Equipment> getEquipmentList() {
@@ -42,6 +51,7 @@ abstract public class Exercise  implements Serializable {
         return "Exercise{" +
                 "equipmentList=" + equipmentList +
                 ", name='" + name + '\'' +
+                ", types='" + types + '\'' +
                 '}';
     }
 }

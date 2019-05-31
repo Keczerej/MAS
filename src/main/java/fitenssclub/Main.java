@@ -3,7 +3,7 @@ package fitenssclub;
 import fitenssclub.activities.Activity;
 import fitenssclub.activities.Equipment;
 import fitenssclub.activities.Exercise;
-import fitenssclub.activities.Strength;
+import fitenssclub.activities.ExerciseType;
 import fitenssclub.users.User;
 import fitenssclub.users.client.Client;
 import fitenssclub.users.worker.form.WorkForm;
@@ -13,6 +13,7 @@ import fitenssclub.users.worker.roles.Trainer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.EnumSet;
 
 public class Main {
 
@@ -61,7 +62,7 @@ public class Main {
         System.out.println("Forma zatrudnienia: " + trainer.getWorkFormName());
 
         Activity activity = new Activity("Joga", LocalDateTime.now(), trainer);
-        Exercise joga = new Strength("pompki");
+        Exercise joga = new Exercise("pompki", EnumSet.of(ExerciseType.Strength));
         Equipment kula = new Equipment("kula");
         Equipment hantle = new Equipment("hantle");
         joga.addEquipment(kula); //Zwykła
