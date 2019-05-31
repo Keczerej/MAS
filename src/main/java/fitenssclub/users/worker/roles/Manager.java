@@ -1,6 +1,7 @@
 package fitenssclub.users.worker.roles;
 
 import fitenssclub.users.worker.Worker;
+import fitenssclub.users.worker.form.B2B;
 import fitenssclub.users.worker.form.WorkForm;
 
 import java.time.LocalDate;
@@ -17,6 +18,10 @@ public class Manager extends Worker {
 
     @Override
     public int getSalary() {
-        return 4500;
+        double scale = 1;
+        if(this.getWorkForm() == WorkForm.B2B) {
+            scale = 1.3;
+        }
+        return (int)(4500 * scale);
     }
 }

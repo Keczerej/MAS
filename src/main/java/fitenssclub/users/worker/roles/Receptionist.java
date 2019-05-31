@@ -18,6 +18,10 @@ public class Receptionist extends Worker {
 
     @Override
     public int getSalary() {
-        return 2500;
+        double scale = 1;
+        if(this.getWorkForm() == WorkForm.B2B) {
+            scale = 1.3;
+        }
+        return (int)(2500 * scale);
     }
 }

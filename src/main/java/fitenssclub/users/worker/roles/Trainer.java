@@ -17,7 +17,11 @@ public class Trainer extends Worker {
 
     @Override
     public int getSalary() {
-        return 3000;
+        double scale = 1;
+        if(this.getWorkForm() == WorkForm.B2B) {
+            scale = 1.3;
+        }
+        return (int)(3000 * scale);
     }
 
 
