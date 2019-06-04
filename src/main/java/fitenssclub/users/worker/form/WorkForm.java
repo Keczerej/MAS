@@ -4,7 +4,7 @@ import fitenssclub.users.worker.Worker;
 
 import java.io.Serializable;
 
-public abstract class WorkForm implements WorkFormInterface, Serializable {
+public abstract class WorkForm implements Serializable {
 
     //MP03 Dziedziczenie wieloaspektowe - rozwiązanie nr. 2 z kompozycją
     private final Worker worker;
@@ -35,7 +35,6 @@ public abstract class WorkForm implements WorkFormInterface, Serializable {
         return worker;
     }
 
-    @Override
     public abstract String getWorkFormName();
 
     public abstract double getSalaryScale();

@@ -14,6 +14,18 @@ public class Manager extends Worker {
         super(login, password, firstName, lastName, birthDate);
     }
 
+    //MP03 5. Dynamizm -> zmiana roli
+    public Manager(Worker prevWorker) {
+        super(
+                prevWorker.getLogin(),
+                prevWorker.getPassword(),
+                prevWorker.getFirstName(),
+                prevWorker.getLastName(),
+                prevWorker.getBirthDate()
+        );
+        this.clone(prevWorker);
+    }
+
     @Override
     public int getSalary() {
         double scale = this.getSalaryScale();

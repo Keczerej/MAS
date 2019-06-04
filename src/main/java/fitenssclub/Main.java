@@ -76,7 +76,7 @@ public class Main {
         System.out.println(client);
 
         System.out.println("\n5.Trener po zmianie roli na menadżera.");
-        Manager changedTrainerToManager = trainer.changeRole(Manager.class);
+        Manager changedTrainerToManager = new Manager(trainer);
         System.out.println(changedTrainerToManager);
         System.out.println("Płaca: " + changedTrainerToManager.getSalary());
         System.out.println("Forma zatrudnienia: " + changedTrainerToManager.getWorkFormName());
