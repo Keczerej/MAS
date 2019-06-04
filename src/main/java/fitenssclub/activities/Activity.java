@@ -1,7 +1,7 @@
 package fitenssclub.activities;
 
 import fitenssclub.users.client.Client;
-import fitenssclub.users.worker.roles.Trainer;
+import fitenssclub.users.worker.roles.ITrainer;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,12 +11,12 @@ public class Activity implements Serializable {
 
     private String name;
     private LocalDateTime date;
-    private Trainer trainer;
+    private ITrainer trainer;
 
     private Map<String, Client> contributors = new HashMap<>();
     List<ActivityToExercise> exercises = new ArrayList<>(); //Asocjacja z atrybutem
 
-    public Activity(String name, LocalDateTime date, Trainer trainer) {
+    public Activity(String name, LocalDateTime date, ITrainer trainer) {
         this.name = name;
         this.date = date;
         this.trainer = trainer;
@@ -73,11 +73,11 @@ public class Activity implements Serializable {
         }
     }
 
-    public Trainer getTrainer() {
+    public ITrainer getTrainer() {
         return trainer;
     }
 
-    public void setTrainer(Trainer trainer) {
+    public void setTrainer(ITrainer trainer) {
         this.trainer = trainer;
     }
 

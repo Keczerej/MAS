@@ -10,10 +10,6 @@ public class Receptionist extends Worker {
         super(login, password, firstName, lastName, city, street, birthDate);
     }
 
-    public Receptionist(String login, String password, String firstName, String lastName, LocalDate birthDate) {
-        super(login, password, firstName, lastName, birthDate);
-    }
-
     //MP03 5. Dynamizm -> zmiana roli
     public Receptionist(Worker prevWorker) {
         super(
@@ -23,7 +19,7 @@ public class Receptionist extends Worker {
                 prevWorker.getLastName(),
                 prevWorker.getBirthDate()
         );
-        this.clone(prevWorker);
+        this.changeRoleHelper(prevWorker);
     }
 
     @Override
@@ -31,4 +27,5 @@ public class Receptionist extends Worker {
         double scale = this.getSalaryScale();
         return (int)(2500 * scale);
     }
+
 }

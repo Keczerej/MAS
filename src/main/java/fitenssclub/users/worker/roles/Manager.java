@@ -10,10 +10,6 @@ public class Manager extends Worker {
         super(login, password, firstName, lastName, city, street, birthDate);
     }
 
-    public Manager(String login, String password, String firstName, String lastName, LocalDate birthDate) {
-        super(login, password, firstName, lastName, birthDate);
-    }
-
     //MP03 5. Dynamizm -> zmiana roli
     public Manager(Worker prevWorker) {
         super(
@@ -23,7 +19,7 @@ public class Manager extends Worker {
                 prevWorker.getLastName(),
                 prevWorker.getBirthDate()
         );
-        this.clone(prevWorker);
+        this.changeRoleHelper(prevWorker);
     }
 
     @Override

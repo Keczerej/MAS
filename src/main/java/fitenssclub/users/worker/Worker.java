@@ -4,12 +4,10 @@ import fitenssclub.activities.Activity;
 import fitenssclub.users.User;
 import fitenssclub.users.client.Client;
 import fitenssclub.users.worker.form.WorkForm;
-import fitenssclub.users.worker.roles.Trainer;
+import fitenssclub.users.worker.roles.ITrainer;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public abstract class Worker extends User {
 
@@ -31,18 +29,18 @@ public abstract class Worker extends User {
         super(login, password, firstName, lastName, city, street, birthDate);
     }
 
-    public Worker(String login, String password, String firstName, String lastName, LocalDate birthDate) {
+    protected Worker(String login, String password, String firstName, String lastName, LocalDate birthDate) {
         super(login, password, firstName, lastName, birthDate);
     }
 
     //MP03 1. Polimorfizm
     abstract public int getSalary();
 
-    protected void clone(Worker prevWorker) {
+    protected void changeRoleHelper(Worker prevWorker) {
         if(prevWorker.getClass() == this.getClass()){
             throw new IllegalArgumentException("Can't change role - it's the same.");
         }
-        if(prevWorker.getClass() == Trainer.class) {
+        if(Arrays.asList(prevWorker.getClass().getInterfaces()).contains(ITrainer.class)) {
             List<Activity> toDelete = new ArrayList<>();
             for(Activity activity : Activity.getActivities()) {
                 if(activity.getTrainer() == prevWorker) {
@@ -55,9 +53,7 @@ public abstract class Worker extends User {
             }
             Activity.getActivities().remove(toDelete);
         }
-        this.getAddresses().forEach(address -> {
-            this.getAddresses().add(address);
-        });
+        this.getAddresses().forEach(address -> this.getAddresses().add(address));
         this.workForm.cloneIntoWorker(this);
     }
 

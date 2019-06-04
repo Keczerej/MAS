@@ -3,15 +3,14 @@ package fitenssclub.users.worker.roles;
 import fitenssclub.users.worker.Worker;
 
 import java.time.LocalDate;
+import java.util.Set;
 
-public class Trainer extends Worker {
+public class Trainer extends Worker implements ITrainer {
 
-    public Trainer(String login, String password, String firstName, String lastName,  String city, String street, LocalDate birthDate) {
+
+    public Trainer(String login, String password, String firstName, String lastName, String city, String street, LocalDate birthDate, Set<String> specialization) {
         super(login, password, firstName, lastName, city, street, birthDate);
-    }
-
-    public Trainer(String login, String password, String firstName, String lastName, LocalDate birthDate) {
-        super(login, password, firstName, lastName, birthDate);
+        this.specializations.addAll(specialization);
     }
 
     //MP03 5. Dynamizm -> zmiana roli
@@ -23,14 +22,16 @@ public class Trainer extends Worker {
                 prevWorker.getLastName(),
                 prevWorker.getBirthDate()
         );
-        this.clone(prevWorker);
+        this.changeRoleHelper(prevWorker);
     }
 
     @Override
     public int getSalary() {
-        double scale = this.getSalaryScale();
-        return (int)(3000 * scale);
+        return getSalary(workForm);
     }
 
-
+    @Override
+    public String toString() {
+        return "Trainer -> " + super.toString() + specialisationsString();
+    }
 }
