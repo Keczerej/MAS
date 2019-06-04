@@ -4,7 +4,6 @@ import fitenssclub.activities.Activity;
 import fitenssclub.users.User;
 import fitenssclub.users.client.Client;
 import fitenssclub.users.worker.form.WorkForm;
-import fitenssclub.users.worker.form.WorkFormInterface;
 import fitenssclub.users.worker.roles.Manager;
 import fitenssclub.users.worker.roles.Receptionist;
 import fitenssclub.users.worker.roles.Trainer;
@@ -14,27 +13,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class Worker extends User implements WorkFormInterface {
+public abstract class Worker extends User {
 
-    private WorkForm workForm;
-
-    public Worker(String login, String password, String firstName, String lastName,  String city, String street, LocalDate birthDate, WorkForm workForm) {
-        super(login, password, firstName, lastName, city, street, birthDate);
-        this.workForm = workForm;
-    }
-
-    public Worker(String login, String password, String firstName, String lastName, LocalDate birthDate, WorkForm workForm) {
-        super(login, password, firstName, lastName, birthDate);
-        this.workForm = workForm;
-    }
+    private WorkForm workForm = WorkForm.createUoP(this);
 
     //MP03 4. Wieloaspektowość
-    public WorkForm getWorkForm() {
-        return workForm;
+    public String getWorkFormName(){
+        return this.workForm.getWorkFormName();
     }
 
-    public void setWorkForm(WorkForm workForm) {
-        this.workForm = workForm;
+    public double getSalaryScale() {
+        return this.workForm.getSalaryScale();
+    }
+
+    public Worker(String login, String password, String firstName, String lastName,  String city, String street, LocalDate birthDate) {
+        super(login, password, firstName, lastName, city, street, birthDate);
+    }
+
+    public Worker(String login, String password, String firstName, String lastName, LocalDate birthDate) {
+        super(login, password, firstName, lastName, birthDate);
     }
 
     //MP03 1. Polimorfizm
@@ -66,8 +63,7 @@ public abstract class Worker extends User implements WorkFormInterface {
                     this.getPassword(),
                     this.getFirstName(),
                     this.getLastName(),
-                    this.getBirthDate(),
-                    this.getWorkForm()
+                    this.getBirthDate()
             );
         }
         if(role == Receptionist.class) {
@@ -76,8 +72,7 @@ public abstract class Worker extends User implements WorkFormInterface {
                     this.getPassword(),
                     this.getFirstName(),
                     this.getLastName(),
-                    this.getBirthDate(),
-                    this.getWorkForm()
+                    this.getBirthDate()
             );
         }
         if(role == Trainer.class) {
@@ -86,20 +81,22 @@ public abstract class Worker extends User implements WorkFormInterface {
                     this.getPassword(),
                     this.getFirstName(),
                     this.getLastName(),
-                    this.getBirthDate(),
-                    this.getWorkForm()
+                    this.getBirthDate()
             );
         }
         T finalNewInstance = newInstance;
+        finalNewInstance.setWorkForm(
+                this.workForm.cloneIntoWorker(finalNewInstance)
+        );
         this.getAddresses().forEach(address -> {
             finalNewInstance.getAddresses().add(address);
         });
         return finalNewInstance;
     }
 
-    @Override
-    public String getWorkFormName(){
-        return this.workForm.getWorkFormName();
+
+    public void setWorkForm(WorkForm workForm) {
+        this.workForm = workForm;
     }
 
 }

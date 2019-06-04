@@ -53,8 +53,7 @@ public class Main {
                 "trudneHasl2o",
                 "Adam",
                 "Kowalski",
-                LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
-                WorkForm.UOP
+                LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         );
         System.out.println("\n2. Dodany trener");
         System.out.println(trainer);
@@ -83,13 +82,7 @@ public class Main {
         System.out.println("Forma zatrudnienia: " + changedTrainerToManager.getWorkFormName());
 
         System.out.println("\n6.Trener po zmianie formy zatrudnienia na B2B.");
-        changedTrainerToManager.setWorkForm(WorkForm.B2B);
-        System.out.println(changedTrainerToManager);
-        System.out.println("Płaca: " + changedTrainerToManager.getSalary());
-        System.out.println("Forma zatrudnienia: " + changedTrainerToManager.getWorkFormName());
-
-        System.out.println("\n7.Trener po zmianie formy zatrudnienia na B2B na niepełny etat.");
-        changedTrainerToManager.setWorkForm(WorkForm.PartTimeB2B);
+        WorkForm.createB2B(changedTrainerToManager);
         System.out.println(changedTrainerToManager);
         System.out.println("Płaca: " + changedTrainerToManager.getSalary());
         System.out.println("Forma zatrudnienia: " + changedTrainerToManager.getWorkFormName());
