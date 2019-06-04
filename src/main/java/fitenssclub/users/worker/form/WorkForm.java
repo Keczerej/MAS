@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public abstract class WorkForm implements Serializable {
 
-    //MP03 Dziedziczenie wieloaspektowe - rozwiązanie nr. 2 z kompozycją
+    //MP03 4. Dziedziczenie wieloaspektowe - rozwiązanie nr. 2 z kompozycją
     private final Worker worker;
 
     public static WorkForm createB2B(Worker worker) {
