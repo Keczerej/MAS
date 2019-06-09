@@ -105,6 +105,7 @@ public class Activity implements Serializable {
                 ", date=" + date +
                 ", \n\t\ttrainer=" + trainer +
                 ", \n\t\texercises=" + exercises +
+                ", \n\t\troom=" + room +
                 '}';
     }
 

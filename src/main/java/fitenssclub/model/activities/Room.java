@@ -1,5 +1,7 @@
 package fitenssclub.model.activities;
 
+import fitenssclub.database.RoomEntity;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +23,7 @@ public class Room implements Serializable {
     public Room(String number, Integer capasity) {
         this.number = number;
         this.capasity = capasity;
+        RoomEntity.getInstance().add(this);
     }
 
     public String getNumber() {

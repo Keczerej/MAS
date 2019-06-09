@@ -1,4 +1,4 @@
-package fitenssclub;
+package fitenssclub.model;
 
 import fitenssclub.database.Database;
 import fitenssclub.model.activities.*;
@@ -44,6 +44,10 @@ public class ModelMain {
                 .forEachRemaining(System.out::println);
         System.out.println("\n# Czytam ćwiczenia");
         Database.getExercises()
+                .iterator()
+                .forEachRemaining(System.out::println);
+        System.out.println("\n# Czytam pokoje");
+        Database.getRooms()
                 .iterator()
                 .forEachRemaining(System.out::println);
     }
