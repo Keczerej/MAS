@@ -1,9 +1,6 @@
 package fitenssclub;
 
-import fitenssclub.activities.Activity;
-import fitenssclub.activities.Equipment;
-import fitenssclub.activities.Exercise;
-import fitenssclub.activities.ExerciseType;
+import fitenssclub.activities.*;
 import fitenssclub.users.User;
 import fitenssclub.users.client.Client;
 import fitenssclub.users.worker.form.WorkForm;
@@ -66,7 +63,8 @@ public class Main {
         System.out.println("Płaca: " + trainer.getSalary());
         System.out.println("Forma zatrudnienia: " + trainer.getWorkFormName());
 
-        Activity activity = new Activity("Joga", LocalDateTime.now(), trainer);
+        Room r106 = new Room("p106", 10);
+        Activity activity = new Activity("Joga", LocalDateTime.now(), trainer, r106);
         Exercise joga = new Exercise("pompki", EnumSet.of(ExerciseType.Strength));
         Equipment kula = new Equipment("kula");
         Equipment hantle = new Equipment("hantle");

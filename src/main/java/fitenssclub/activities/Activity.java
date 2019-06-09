@@ -12,14 +12,17 @@ public class Activity implements Serializable {
     private String name;
     private LocalDateTime date;
     private ITrainer trainer;
+    private Room room;
 
     private Map<String, Client> contributors = new HashMap<>();
     List<ActivityToExercise> exercises = new ArrayList<>(); //Asocjacja z atrybutem
 
-    public Activity(String name, LocalDateTime date, ITrainer trainer) {
+    public Activity(String name, LocalDateTime date, ITrainer trainer, Room room) {
         this.name = name;
         this.date = date;
         this.trainer = trainer;
+        this.room = room;
+        room.addActivity(this);
         activities.add(this);
     }
 
@@ -100,5 +103,13 @@ public class Activity implements Serializable {
     }
 
     private static List<Activity> activities = new ArrayList<Activity>();
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }
 
