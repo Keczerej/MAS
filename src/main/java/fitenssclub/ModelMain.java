@@ -1,12 +1,12 @@
 package fitenssclub;
 
-import fitenssclub.activities.*;
-import fitenssclub.users.User;
-import fitenssclub.users.client.Client;
-import fitenssclub.users.worker.form.WorkForm;
-import fitenssclub.users.worker.roles.Manager;
-import fitenssclub.users.worker.roles.Trainer;
-import fitenssclub.users.worker.roles.TrainerReceptionist;
+import fitenssclub.database.Database;
+import fitenssclub.model.activities.*;
+import fitenssclub.model.users.client.Client;
+import fitenssclub.model.users.worker.form.WorkForm;
+import fitenssclub.model.users.worker.roles.Manager;
+import fitenssclub.model.users.worker.roles.Trainer;
+import fitenssclub.model.users.worker.roles.TrainerReceptionist;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Main {
+public class ModelMain {
 
     public static void main(String[] argv) {
         if(argv[0].equals("write")){
@@ -27,15 +27,29 @@ public class Main {
     }
 
     private static void readFromDatabase(String fileName) {
-        System.out.println("## Czytam uzytkonikow z pliku " + fileName + "\n\n");
-        User.readFromFile(fileName);
-        User.getUsers()
+        Database.readFromPath(fileName);
+        readDbState();
+    }
+
+    private static void readDbState() {
+        System.out.println("\n\n### Stan bazy danych w pamięci podręcznej.");
+
+        System.out.println("\n# Czytam użytkowników");
+        Database.getUsers()
+                .iterator()
+                .forEachRemaining(System.out::println);
+        System.out.println("\n# Czytam aktywności");
+        Database.getActivities()
+                .iterator()
+                .forEachRemaining(System.out::println);
+        System.out.println("\n# Czytam ćwiczenia");
+        Database.getExercises()
                 .iterator()
                 .forEachRemaining(System.out::println);
     }
 
-    private static void createDatabase(String fileName) {
-        System.out.println("## Dodaję dane do pliku " + fileName + "\n\n");
+    private static void createDatabase(String filesPath) {
+        System.out.println("## Dodaję dane do pliku " + filesPath + "\n\n");
         Client client = new Client(
                 "keczerej",
                 "trudneHaslo",
@@ -71,7 +85,7 @@ public class Main {
         joga.addEquipment(kula); //Zwykła
         joga.addEquipment(hantle);
         activity.addExercise(joga, 10); //Z atrybutem
-        activity.addContributors(client); //Kwalifikowana
+        activity.addContributor(client); //Kwalifikowana
         System.out.println("\n3. Dodane zajecia");
         System.out.println(activity);
         System.out.println("\n3a. Czas zajęć");
@@ -101,7 +115,30 @@ public class Main {
         System.out.println("\n8. Klient po tym - jak trener nie jest już trenerem (zajęcia odwołane)");
         System.out.println(client);
 
-        User.writeToFile(fileName);
+        System.out.println("9. Dodanie nowego trenera i przypisanie go do nowej aktyrwności");
+
+        Set<String> newSpecialisations = new HashSet<>();
+        newSpecialisations.add("Pilates");
+
+        Trainer bartek = new Trainer(
+                "bartek",
+                "trudneHasl2o",
+                "Bartek",
+                "Kowalski",
+                "Gdańsk",
+                "Ul. Szkolna 13",
+                LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                newSpecialisations
+        );
+
+        Activity newActivity = new Activity("Nowe zajęcia", LocalDateTime.now(), bartek, new Room("p107", 30));
+        newActivity.addContributor(client);
+        newActivity.addExercise(joga, 20);
+        System.out.println(bartek);
+        System.out.println(client);
+        System.out.println(newActivity);
+        readDbState();
+        Database.writeToPath(filesPath);
     }
 
 }

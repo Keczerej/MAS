@@ -1,24 +1,19 @@
-package fitenssclub.users.worker.roles;
+package fitenssclub.model.users.worker.roles;
 
-import fitenssclub.users.worker.form.WorkForm;
+import fitenssclub.model.users.worker.form.WorkForm;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public interface ITrainer {
 
-    Set<String> specializations = new HashSet<>();
-
-    default Set<String> getSpecializations() {
-        return specializations;
-    }
+    Set<String> getSpecializations();
 
     default void addSpecialization(String specialisation) {
-        specializations.add(specialisation);
+        getSpecializations().add(specialisation);
     }
 
     default void removeSpecialization(String specialisation) {
-        specializations.remove(specialisation);
+        getSpecializations().remove(specialisation);
     }
 
     default int getSalary(WorkForm workForm) {

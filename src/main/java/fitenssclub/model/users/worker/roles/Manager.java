@@ -1,6 +1,6 @@
-package fitenssclub.users.worker.roles;
+package fitenssclub.model.users.worker.roles;
 
-import fitenssclub.users.worker.Worker;
+import fitenssclub.model.users.worker.Worker;
 
 import java.time.LocalDate;
 
@@ -27,4 +27,10 @@ public class Manager extends Worker {
         double scale = this.getSalaryScale();
         return (int)(4500 * scale);
     }
+
+    @Override
+    public String toString() {
+        return "Manager -> " + super.toString();
+    }
+
 }

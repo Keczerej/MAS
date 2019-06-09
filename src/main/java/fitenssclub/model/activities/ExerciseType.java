@@ -1,4 +1,4 @@
-package fitenssclub.activities;
+package fitenssclub.model.activities;
 
 public enum ExerciseType {
     Relax("Relaksacyjne", "Kręgosłup"),

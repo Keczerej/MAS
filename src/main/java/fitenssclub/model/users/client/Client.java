@@ -1,7 +1,7 @@
-package fitenssclub.users.client;
+package fitenssclub.model.users.client;
 
-import fitenssclub.activities.Activity;
-import fitenssclub.users.User;
+import fitenssclub.model.activities.Activity;
+import fitenssclub.model.users.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,8 +29,7 @@ public class Client extends User {
 
     @Override
     public String toString() {
-        return super.toString() +  " -> Client{" +
-                "\n\tactivityList=" + activityList +
-                '}';
+        return "Client -> " + super.toString() + " -> activityList: \n\t" +  activityList;
     }
+
 }

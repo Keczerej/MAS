@@ -1,10 +1,13 @@
-package fitenssclub.users.worker;
+package fitenssclub.model.users.worker;
 
-import fitenssclub.activities.Activity;
-import fitenssclub.users.User;
-import fitenssclub.users.client.Client;
-import fitenssclub.users.worker.form.WorkForm;
-import fitenssclub.users.worker.roles.ITrainer;
+import fitenssclub.database.ActivityEntity;
+import fitenssclub.database.Database;
+import fitenssclub.database.UserEntity;
+import fitenssclub.model.activities.Activity;
+import fitenssclub.model.users.User;
+import fitenssclub.model.users.client.Client;
+import fitenssclub.model.users.worker.form.WorkForm;
+import fitenssclub.model.users.worker.roles.ITrainer;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -42,7 +45,7 @@ public abstract class Worker extends User {
         }
         if(Arrays.asList(prevWorker.getClass().getInterfaces()).contains(ITrainer.class)) {
             List<Activity> toDelete = new ArrayList<>();
-            for(Activity activity : Activity.getActivities()) {
+            for(Activity activity : Database.getActivities()) {
                 if(activity.getTrainer() == prevWorker) {
                     Iterator<Client> clients = activity.getContributors().iterator();
                     while(clients.hasNext()){
@@ -51,9 +54,10 @@ public abstract class Worker extends User {
                     toDelete.add(activity);
                 }
             }
-            Activity.getActivities().remove(toDelete);
+            ActivityEntity.getInstance().removeAll(toDelete);
         }
         this.getAddresses().forEach(address -> this.getAddresses().add(address));
+        UserEntity.getInstance().remove(prevWorker);
         this.workForm.cloneIntoWorker(this);
     }
 

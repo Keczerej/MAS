@@ -1,4 +1,4 @@
-package fitenssclub.activities;
+package fitenssclub.model.activities;
 
 import java.io.Serializable;
 import java.util.ArrayList;

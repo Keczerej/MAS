@@ -1,9 +1,10 @@
-package fitenssclub.activities;
+package fitenssclub.model.activities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Room {
+public class Room implements Serializable {
 
     private String number;
     private Integer capasity;

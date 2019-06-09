@@ -1,6 +1,6 @@
-package fitenssclub.users.worker.roles;
+package fitenssclub.model.users.worker.roles;
 
-import fitenssclub.users.worker.Worker;
+import fitenssclub.model.users.worker.Worker;
 
 import java.time.LocalDate;
 
@@ -26,6 +26,11 @@ public class Receptionist extends Worker {
     public int getSalary() {
         double scale = this.getSalaryScale();
         return (int)(2500 * scale);
+    }
+
+    @Override
+    public String toString() {
+        return "Receptionist -> " + super.toString();
     }
 
 }

@@ -1,11 +1,15 @@
-package fitenssclub.activities;
+package fitenssclub.model.activities;
 
-import fitenssclub.users.client.Client;
-import fitenssclub.users.worker.roles.ITrainer;
+import fitenssclub.database.ActivityEntity;
+import fitenssclub.database.ExerciseEntity;
+import fitenssclub.model.users.User;
+import fitenssclub.model.users.client.Client;
+import fitenssclub.model.users.worker.roles.ITrainer;
 
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Activity implements Serializable {
 
@@ -15,6 +19,7 @@ public class Activity implements Serializable {
     private Room room;
 
     private Map<String, Client> contributors = new HashMap<>();
+
     List<ActivityToExercise> exercises = new ArrayList<>(); //Asocjacja z atrybutem
 
     public Activity(String name, LocalDateTime date, ITrainer trainer, Room room) {
@@ -23,7 +28,8 @@ public class Activity implements Serializable {
         this.trainer = trainer;
         this.room = room;
         room.addActivity(this);
-        activities.add(this);
+        ActivityEntity.getInstance().remove(this);
+        ActivityEntity.getInstance().add(this);
     }
 
     public String getName() {
@@ -46,7 +52,7 @@ public class Activity implements Serializable {
         return new ArrayList<>(contributors.values());
     }
 
-    public void addContributors(Client contributor) {
+    public void addContributor(Client contributor) {
         Optional<Client> existing = this.getContributor(contributor.getLogin());
         existing.ifPresent(client -> this.removeContributor(client.getLogin()));
         this.contributors.put(contributor.getLogin(), contributor);
@@ -84,6 +90,10 @@ public class Activity implements Serializable {
         this.trainer = trainer;
     }
 
+    public List<Exercise> getExercises() {
+        return exercises.stream().map(ActivityToExercise::getExercise).collect(Collectors.toList());
+    }
+
     public long getExercisesTime() {
         return this.exercises.stream().mapToLong(ActivityToExercise::getMinutesForExercise).sum();
     }
@@ -98,12 +108,6 @@ public class Activity implements Serializable {
                 '}';
     }
 
-    public static List<Activity> getActivities() {
-        return activities;
-    }
-
-    private static List<Activity> activities = new ArrayList<Activity>();
-
     public Room getRoom() {
         return room;
     }
@@ -111,5 +115,6 @@ public class Activity implements Serializable {
     public void setRoom(Room room) {
         this.room = room;
     }
+    
 }
 

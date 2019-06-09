@@ -1,6 +1,6 @@
-package fitenssclub.users.worker.form;
+package fitenssclub.model.users.worker.form;
 
-import fitenssclub.users.worker.Worker;
+import fitenssclub.model.users.worker.Worker;
 
 import java.io.Serializable;
 

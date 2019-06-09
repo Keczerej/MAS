@@ -1,4 +1,6 @@
-package fitenssclub.users;
+package fitenssclub.model.users;
+
+import fitenssclub.database.UserEntity;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -33,8 +35,8 @@ public abstract class User implements Serializable {
         if (this.age < MIN_AGE) {
             throw new IllegalArgumentException("Użytkownik powinien mieć co najmniej 16 lat");
         }
-        User.users.remove(this);
-        User.users.add(this);
+        UserEntity.getInstance().remove(this);
+        UserEntity.getInstance().add(this);
     }
 
     public List<Address> getAddresses() {
@@ -116,36 +118,6 @@ public abstract class User implements Serializable {
                 ", age=" + getAge() +
                 '}';
     }
-
-    public static void readFromFile(String filePath) {
-        try {
-            User.users.addAll(
-                    (
-                            (List<User>) new ObjectInputStream(
-                                    new FileInputStream(filePath)
-                            ).readObject()
-                    )
-            );
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void writeToFile(String filePath) {
-        try {
-            new ObjectOutputStream(
-                    new FileOutputStream(filePath)
-            ).writeObject(new ArrayList<>(User.users));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static Set<User> users = new HashSet<>(); //Ekstensja,
-
-    public static Set<User> getUsers() { //Metoda klasowa
-        return new HashSet<>(User.users);
-    } //Metoda klasowa,
 
 }
 

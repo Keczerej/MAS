@@ -1,4 +1,7 @@
-package fitenssclub.activities;
+package fitenssclub.model.activities;
+
+import fitenssclub.database.ExerciseEntity;
+import fitenssclub.database.UserEntity;
 
 import java.io.Serializable;
 import java.util.*;
@@ -18,6 +21,8 @@ public class Exercise implements Serializable {
         this.name = name;
         if(types.size() == 0) throw new IllegalArgumentException("Define at least one type of exercise");
         this.types = types;
+        ExerciseEntity.getInstance().remove(this);
+        ExerciseEntity.getInstance().add(this);
     }
 
     public EnumSet<ExerciseType> getTypes() {
