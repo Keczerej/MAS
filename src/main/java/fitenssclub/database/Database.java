@@ -7,6 +7,9 @@ import fitenssclub.model.users.User;
 
 import java.util.Set;
 
+/**
+ * Zarządzanie bazą danych w pamięci oraz zapisywanie/wczytywanie do pliku.
+ */
 public class Database {
 
     private static UserEntity userEntity = UserEntity.getInstance();
@@ -14,6 +17,17 @@ public class Database {
     private static ExerciseEntity exerciseEntity = ExerciseEntity.getInstance();
     private static RoomEntity roomEntity = RoomEntity.getInstance();
 
+    /**
+     * Zapisuje stan bazy w pamieci do plików
+     * Np. podajac scieżkę /home/test
+     * zostaną stworzone pliki
+     * /home/test.udb -> uzytkownicy
+     * /home/test.adb -> zajecia
+     * /home/test.edb -> ćwiczenia
+     * /home/test.rdb -> sale
+     *
+     * @param filePath sciezka do pliku
+     */
     public static void readFromPath(String filePath) {
         userEntity.readFromFile(filePath + ".udb");
         activityEntity.readFromFile(filePath + ".adb");
@@ -21,6 +35,17 @@ public class Database {
         roomEntity.readFromFile(filePath + ".rdb");
     }
 
+    /**
+     * Wczytuje stan bazy z plików do pamięci
+     * Np. podajac scieżkę /home/test
+     * zostaną wczytane pliki
+     * /home/test.udb -> uzytkownicy
+     * /home/test.adb -> zajecia
+     * /home/test.edb -> ćwiczenia
+     * /home/test.rdb -> sale
+     *
+     * @param filePath sciezka do pliku
+     */
     public static void writeToPath(String filePath) {
         userEntity.writeToFile(filePath + ".udb");
         activityEntity.writeToFile(filePath + ".adb");
