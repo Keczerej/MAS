@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Client extends User {
 
-    List<Activity> activityList = new ArrayList<>();
+    private List<Activity> activityList = new ArrayList<>();
 
     public Client(String login, String password, String firstName, String lastName, String city, String street, LocalDate birthDate) {
         super(login, password, firstName, lastName, city, street, birthDate);
@@ -22,10 +22,20 @@ public class Client extends User {
         super(login, password, firstName, lastName, birthDate);
     }
 
+    /**
+     * Dodaje użytkownika jako uczestnika zajęć
+     *
+     * @param activity zajecie do dodania
+     */
     public void addActivity(Activity activity) {
         this.activityList.add(activity);
     }
 
+    /**
+     * Rezygnuje z uczestnictwa w danych zajęciach
+     *
+     * @param activity zajęcia do zrezygnowania
+     */
     public void removeActivity(Activity activity) {
         this.activityList.remove(activity);
     }

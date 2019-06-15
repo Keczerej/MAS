@@ -21,6 +21,12 @@ public class TrainerReceptionist extends Receptionist implements ITrainer {
     }
 
     //MP03 5. Dynamizm -> zmiana roli
+    /**
+     * Zwraca instancję tego samego pracownika, ale z nową rolą. Uwaga! Nie powinno korzystać się z instancji
+     * prevWorker - traktować ją jakby nie istaniała.
+     *
+     * @param prevWorker pracownik, który zmienia rolę
+     */
     public TrainerReceptionist(Worker prevWorker) {
         super(prevWorker);
         changeRoleHelper(prevWorker);

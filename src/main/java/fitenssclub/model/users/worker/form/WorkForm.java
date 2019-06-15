@@ -4,11 +4,20 @@ import fitenssclub.model.users.worker.Worker;
 
 import java.io.Serializable;
 
+/**
+ * Forma zatrudnienia
+ */
 public abstract class WorkForm implements Serializable {
 
     //MP03 4. Dziedziczenie wieloaspektowe - rozwiązanie nr. 2 z kompozycją
     private final Worker worker;
 
+    /**
+     * Stworzenie formy zatrudnienia typu B2B dla pracownika
+     *
+     * @param worker pracownik, do którego zostanie przypisana forma zatrudnienia typu B2B
+     * @return przypisaną formę zatrudnienia
+     */
     public static WorkForm createB2B(Worker worker) {
         validateWorkerNotNull(worker);
         WorkForm workForm = new B2B(worker);
@@ -16,6 +25,12 @@ public abstract class WorkForm implements Serializable {
         return workForm;
     }
 
+    /**
+     * Stworzenie formy zatrudnienia typu UoP dla pracownika
+     *
+     * @param worker pracownik, do którego zostanie przypisana forma zatrudnienia typu UoP
+     * @return przypisaną formę zatrudnienia
+     */
     public static WorkForm createUoP(Worker worker) {
         validateWorkerNotNull(worker);
         WorkForm workForm = new UoP(worker);

@@ -11,6 +11,12 @@ public class Receptionist extends Worker {
     }
 
     //MP03 5. Dynamizm -> zmiana roli
+    /**
+     * Zwraca instancję tego samego pracownika, ale z nową rolą. Uwaga! Nie powinno korzystać się z instancji
+     * prevWorker - traktować ją jakby nie istaniała.
+     *
+     * @param prevWorker pracownik, który zmienia rolę
+     */
     public Receptionist(Worker prevWorker) {
         super(
                 prevWorker.getLogin(),

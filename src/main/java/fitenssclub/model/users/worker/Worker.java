@@ -16,6 +16,9 @@ public abstract class Worker extends User {
 
     protected WorkForm workForm = WorkForm.createUoP(this);
 
+    /**
+     * @param workForm nowa forma zatrudnienia
+     */
     public void setWorkForm(WorkForm workForm) {
         this.workForm = workForm;
     }
@@ -39,6 +42,12 @@ public abstract class Worker extends User {
     //MP03 1. Polimorfizm
     abstract public int getSalary();
 
+    /**
+     * Funkcja pomocnicza do zmiany roli. Usuwa instancje zmienianą z bazy danych (w pamięci)
+     * @throws IllegalArgumentException kiedy pracownik chce zmienic rolę na taką jaką już ma
+     *
+     * @param prevWorker pracownik, który zmienia rolę
+     */
     protected void changeRoleHelper(Worker prevWorker) {
         if(prevWorker.getClass() == this.getClass()){
             throw new IllegalArgumentException("Can't change role - it's the same.");
