@@ -3,7 +3,7 @@ package fitenssclub.model.activities;
 import java.io.Serializable;
 
 
-class ActivityToExercise implements Serializable {
+public class ActivityToExercise implements Serializable {
 
     private Exercise exercise;
     private Activity activity;

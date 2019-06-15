@@ -17,10 +17,6 @@ abstract class DatabaseEntity<T extends Serializable> {
 
     private Set<T> entities = new HashSet<>();
 
-    void addEntities(List<T> entities) {
-        this.entities.addAll(entities);
-    }
-
     void readFromFile(String filePath) {
         try {
             entities.addAll(
@@ -49,7 +45,7 @@ abstract class DatabaseEntity<T extends Serializable> {
     }
 
     Set<T> getEntities() {
-        return new HashSet<T>(entities);
+        return new HashSet<>(entities);
     }
 
     public void remove(T entity) {
@@ -58,10 +54,6 @@ abstract class DatabaseEntity<T extends Serializable> {
 
     public void add(T entity) {
         entities.add(entity);
-    }
-
-    public void clear() {
-        this.entities.clear();
     }
 
     public void removeAll(List<T> toDelete) {

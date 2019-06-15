@@ -135,14 +135,55 @@ public class ModelMain {
                 newSpecialisations
         );
 
+        newSpecialisations.add("Joga");
+
+        new Trainer(
+                "pawel",
+                "trudneHasl2o",
+                "Paweł",
+                "Nowak",
+                "Gdańsk",
+                "Ul. Szkolna 13",
+                LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                newSpecialisations
+        );
+
+
         Activity newActivity = new Activity("Nowe zajęcia", LocalDateTime.now(), bartek, new Room("p107", 30));
         newActivity.addContributor(client);
         newActivity.addExercise(joga, 20);
         System.out.println(bartek);
         System.out.println(client);
         System.out.println(newActivity);
-        readDbState();
+
+        additionalEntities(specialisations);
+
         Database.writeToPath(filesPath);
+        readDbState();
+    }
+
+    private static void additionalEntities(Set<String> specialisations) {
+
+        new Trainer(
+                "artur",
+                "trudneHasl2o",
+                "Artur",
+                "Nowak",
+                "Gdańsk",
+                "Ul. Szkolna 13",
+                LocalDate.parse("16-05-2001", DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                specialisations
+        );
+
+        //Adding some exercises
+        new Exercise("bieganie", EnumSet.of(ExerciseType.Aerobic));
+        new Exercise("skakanie", EnumSet.of(ExerciseType.Aerobic));
+        new Exercise("pajacyki", EnumSet.of(ExerciseType.Aerobic));
+        new Exercise("fikołki", EnumSet.of(ExerciseType.Aerobic));
+        new Exercise("rozciąganie", EnumSet.of(ExerciseType.Aerobic));
+        new Exercise("piłka", EnumSet.of(ExerciseType.Aerobic));
+
+        new Room("p101a", 15);
     }
 
 }

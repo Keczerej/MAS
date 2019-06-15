@@ -15,44 +15,10 @@ public class Database {
     private static RoomEntity roomEntity = RoomEntity.getInstance();
 
     public static void readFromPath(String filePath) {
-
         userEntity.readFromFile(filePath + ".udb");
         activityEntity.readFromFile(filePath + ".adb");
         exerciseEntity.readFromFile(filePath + ".edb");
         roomEntity.readFromFile(filePath + ".rdb");
-//
-//        activityEntity.clear();
-//        userEntity.clear();
-//        exerciseEntity.clear();
-//
-//        activityEntity.readFromFile(filePath + ".adb");
-//
-//        List<User> existingUsers = activityEntity
-//                .getEntities()
-//                .stream()
-//                .map(Activity::getContributors).flatMap(List::stream)
-//                .collect(Collectors.toList());
-//
-//        List<User> existingTrainsers = activityEntity
-//                .getEntities()
-//                .stream()
-//                .map(trainer -> (User) (trainer.getTrainer()))
-//                .collect(Collectors.toList());
-//
-//
-//        existingUsers.addAll(existingTrainsers);
-//
-//        userEntity.addEntities(existingUsers);
-//        userEntity.readFromFile(filePath + ".udb");
-//
-//        List<Exercise> existingExercises = activityEntity
-//                .getEntities()
-//                .stream()
-//                .map(Activity::getExercises).flatMap(List::stream)
-//                .collect(Collectors.toList());
-//
-//        exerciseEntity.addEntities(existingExercises);
-//        exerciseEntity.readFromFile(filePath + ".edb");
     }
 
     public static void writeToPath(String filePath) {
