@@ -3,11 +3,11 @@ package fitenssclub.view;
 import javax.swing.*;
 
 public class MainMenu extends AbstractView {
-    private JButton listaZajęćButton;
+    private JButton listaZajecButton;
     JPanel panelMain;
 
     MainMenu(MainController mainController) {
         super(mainController);
-        listaZajęćButton.addActionListener(e -> mainController.openActivityList());
+        listaZajecButton.addActionListener(e -> mainController.openActivityList());
     }
 }

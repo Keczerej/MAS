@@ -1,0 +1,9 @@
+fitenssclub.database
+fitenssclub.model
+fitenssclub.model.activities
+fitenssclub.model.users
+fitenssclub.model.users.client
+fitenssclub.model.users.worker
+fitenssclub.model.users.worker.form
+fitenssclub.model.users.worker.roles
+fitenssclub.view

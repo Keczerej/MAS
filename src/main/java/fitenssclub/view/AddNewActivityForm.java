@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class AddNewActivityForm extends AbstractView {
     public JPanel addNewActivityPanel;
-    private JTextField podajNazwęDlaZajęćTextField;
+    private JTextField podajNazweDlaZajecTextField;
     private DateTimePicker dateTimePicker;
     private JButton anulujButton;
     private JButton dalejButton;
@@ -84,14 +84,14 @@ public class AddNewActivityForm extends AbstractView {
 
     private ActivityDTO createActivityDTO() {
         return new ActivityDTO(
-                this.podajNazwęDlaZajęćTextField.getText(),
+                this.podajNazweDlaZajecTextField.getText(),
                 this.dateTimePicker.getDateTimePermissive(),
                 this.exerciseItems.stream().map(ExerciseItem::createExerciseDTO).collect(Collectors.toList())
         );
     }
 
     void load(ActivityDTO activityDTO) {
-        this.podajNazwęDlaZajęćTextField.setText(activityDTO.name);
+        this.podajNazweDlaZajecTextField.setText(activityDTO.name);
         this.dateTimePicker.setDateTimePermissive(activityDTO.startTime);
         this.loadExercises(activityDTO.exerciseList);
         this.mainController.pack();

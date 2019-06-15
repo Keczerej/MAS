@@ -47,7 +47,7 @@ public class Activity implements Serializable {
     }
 
     /**
-     * @param #name nowa nazwa dla zajęć
+     * @param name nowa nazwa dla zajęć
      */
     public void setName(String name) {
         this.name = name;
@@ -169,7 +169,7 @@ public class Activity implements Serializable {
     }
 
     /**
-     * @param #room nowa sala
+     * @param room nowa sala
      */
     public void setRoom(Room room) {
         this.room = room;

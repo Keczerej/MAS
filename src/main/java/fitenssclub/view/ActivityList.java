@@ -8,12 +8,12 @@ import javax.swing.*;
 public class ActivityList extends AbstractView {
     JPanel activityPanel;
     private JList<Activity> listOfActivities;
-    private JButton dodajNoweZajęciaButton;
+    private JButton dodajNoweZajeciaButton;
     private JButton anulujButton;
 
     ActivityList(MainController mainController) {
         super(mainController);
-        dodajNoweZajęciaButton.addActionListener(e -> mainController.openAddNewActivity());
+        dodajNoweZajeciaButton.addActionListener(e -> mainController.openAddNewActivity());
         anulujButton.addActionListener(actionEvent -> mainController.openMainMenu());
     }
 
