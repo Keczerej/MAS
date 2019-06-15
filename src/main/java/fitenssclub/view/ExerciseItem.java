@@ -5,6 +5,9 @@ import fitenssclub.model.activities.Exercise;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Widok pojedynczego zajęcia na liście
+ */
 class ExerciseItem {
     private JCheckBox selected;
     private JLabel name;

@@ -2,6 +2,10 @@ package fitenssclub.view;
 
 import fitenssclub.model.activities.Exercise;
 
+/**
+ * DTO - Klasa transferu danych
+ * Klasa przechowująca uproszczone informacje o cwiczeniach
+ */
 public class ExerciseDTO {
 
     final boolean isSelected;

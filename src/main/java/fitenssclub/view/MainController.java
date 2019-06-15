@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-
+/**
+ * Główny kontroler widoków w aplikacji. Zarządza również bazą danych.
+ */
 class MainController {
 
     private final static String DATABASE_NAME = "test";

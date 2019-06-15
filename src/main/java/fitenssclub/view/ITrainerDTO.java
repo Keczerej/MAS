@@ -3,6 +3,10 @@ package fitenssclub.view;
 import fitenssclub.model.users.User;
 import fitenssclub.model.users.worker.roles.ITrainer;
 
+/**
+ * DTO - Klasa transferu danych
+ * Klasa przechowująca uproszczone informacje o trenerze (prostrzy toString() dla JChooser)
+ */
 class ITrainerDTO {
     final ITrainer trainer;
 

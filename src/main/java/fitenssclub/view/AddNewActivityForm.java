@@ -14,6 +14,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * Główny widok dodawania nowego zajęcia
+ */
 public class AddNewActivityForm extends AbstractView {
     public JPanel addNewActivityPanel;
     private JTextField podajNazweDlaZajecTextField;

@@ -5,6 +5,9 @@ import fitenssclub.model.users.User;
 
 import javax.swing.*;
 
+/**
+ * Widok pojedynczego zajęcia na liście zajęć
+ */
 public class ActivityItem  {
     private JLabel dateFrom;
     private JLabel dateTo;

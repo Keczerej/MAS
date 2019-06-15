@@ -5,6 +5,10 @@ import fitenssclub.model.activities.Activity;
 
 import javax.swing.*;
 
+
+/**
+ * Główny widok listy zajęć
+ */
 public class ActivityList extends AbstractView {
     JPanel activityPanel;
     private JList<Activity> listOfActivities;

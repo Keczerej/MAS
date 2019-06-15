@@ -3,9 +3,13 @@ package fitenssclub.view;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * DTO - Klasa transferu danych
+ * Klasa przechowująca uproszczone informacje o zajęciach
+ */
 class ActivityDTO {
     public final String name;
-    public final LocalDateTime startTime;
+    final LocalDateTime startTime;
     final List<ExerciseDTO> exerciseList;
 
     ActivityDTO(String name, LocalDateTime startTime, List<ExerciseDTO> exerciseList) {
@@ -23,6 +27,11 @@ class ActivityDTO {
                 '}';
     }
 
+    /**
+     * Sprawdza czy dane są poprawne (nazwa nie może być pusta, musi być co najmniej jedno ćwiczenie, czas nie może być z przeszłości)
+     *
+     * @throws IllegalArgumentException gdy nie są
+     */
     void validate() {
         if(this.name.trim().length() < 1) throw new IllegalArgumentException("Nazwa zajęć nie może być pusta");
         if(this.startTime.isBefore(LocalDateTime.now())) throw new IllegalArgumentException("Nie można dodawać zajęć w czasie przeszłym.");

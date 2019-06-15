@@ -5,6 +5,10 @@ import fitenssclub.model.activities.Activity;
 import javax.swing.*;
 import java.util.List;
 
+
+/**
+ * Główny widok wuboru sali i trenera dla zajęć
+ */
 public class AddRoomAndTrainerForm extends AbstractView {
     JPanel addPanel;
     private JComboBox<RoomDTO> chooseRoom;
