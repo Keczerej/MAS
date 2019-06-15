@@ -5,11 +5,17 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Sprzęt używany w ćwieczeniach
+ */
 public class Equipment implements Serializable {
 
     private String name;
-    protected Set<Exercise> exercises = new HashSet<>();
+    Set<Exercise> exercises = new HashSet<>();
 
+    /**
+     * @param name nazwa
+     */
     public Equipment(String name) {
         this.name = name;
     }
@@ -18,10 +24,16 @@ public class Equipment implements Serializable {
         return new ArrayList<>(exercises);
     }
 
+    /**
+     * @return nazwa
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @param name nowa nazwa
+     */
     public void setName(String name) {
         this.name = name;
     }

@@ -1,11 +1,14 @@
 package fitenssclub.model.activities;
 
 import fitenssclub.database.ExerciseEntity;
-import fitenssclub.database.UserEntity;
 
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * Ćwiczenie
+ * Stworzenie obiektu automatycznie zapisuje go w bazie danych w pamieci
+ */
 public class Exercise implements Serializable {
 
     //Asocjacja zwyczajna
@@ -17,6 +20,10 @@ public class Exercise implements Serializable {
     private String name;
     List<ActivityToExercise> activities = new ArrayList<>();
 
+    /**
+     * @param name nazwa
+     * @param types typy pod jakie podlega ćwiczenie
+     */
     public Exercise(String name, EnumSet<ExerciseType> types) {
         this.name = name;
         if(types.size() == 0) throw new IllegalArgumentException("Define at least one type of exercise");
@@ -33,11 +40,21 @@ public class Exercise implements Serializable {
         return new ArrayList<>(this.equipmentList);
     }
 
+    /**
+     * Dodaje sprzęt do ćwiczeń
+     *
+     * @param equipment nowy sprzęt używany w ćwiczenie
+     */
     public void addEquipment(Equipment equipment) {
         this.equipmentList.add(equipment);
         equipment.exercises.add(this);
     }
 
+    /**
+     * Usuwa sprzęt z ćwiczenia
+     *
+     * @param equipment sprzęt do usunięcia
+     */
     public void removeEquipment(Equipment equipment) {
         this.equipmentList.remove(equipment);
         equipment.exercises.remove(this);

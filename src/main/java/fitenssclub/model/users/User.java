@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+/**
+ * Stworzenie obiektu automatycznie zapisuje go w bazie danych w pamieci
+ */
 //MP03 1. Klasa Abstrakcyjna
 public abstract class User implements Serializable {
 
@@ -20,11 +23,29 @@ public abstract class User implements Serializable {
     private LocalDate birthDate;
     private transient Integer age;
 
+    /**
+     * @param login login
+     * @param password hasło
+     * @param firstName imię
+     * @param lastName nazwisko
+     * @param city miasto
+     * @param street ulica (pełny tekst)
+     * @param birthDate data urodzenia
+     */
     public User(String login, String password, String firstName, String lastName, String city, String street, LocalDate birthDate) {
         this(login, password, firstName, lastName, birthDate);
         this.addAddress(city, street);
     }
 
+    /**
+     *
+     * @throws IllegalArgumentException kiedu uzytkownik nie ma 16 lat
+     * @param login login
+     * @param password hasło
+     * @param firstName imię
+     * @param lastName nazwisko
+     * @param birthDate data urodzenia
+     */
     public User(String login, String password, String firstName, String lastName, LocalDate birthDate) {
         this.login = login;
         this.password = password;
@@ -83,6 +104,11 @@ public abstract class User implements Serializable {
         this.addresses.remove(address);
     }
 
+    /**
+     * Zwraca wiek użytkownika. Wiek jest wyliczany z daty urodzenia i przypisywany tylko raz (leniwa inicjalizacja).
+     *
+     * @return wiek
+     */
     public Integer getAge() {
         if (this.age == null)
             calculateAndAssignAge();

@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Klasa przechowująca informację o zajęciach
+ * Stworzenie obiektu automatycznie zapisuje go w bazie danych w pamieci
  */
 public class Activity implements Serializable {
 

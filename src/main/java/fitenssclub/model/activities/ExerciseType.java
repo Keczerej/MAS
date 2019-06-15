@@ -1,5 +1,9 @@
 package fitenssclub.model.activities;
 
+/**
+ * Typ ćwiczenia
+ * Stworzenie obiektu automatycznie zapisuje go w bazie danych w pamieci
+ */
 public enum ExerciseType {
     Relax("Relaksacyjne", "Kręgosłup"),
     Strength("Siłowe", "Triceps+Biceps"),
@@ -16,6 +20,10 @@ public enum ExerciseType {
                 "} " + super.toString();
     }
 
+    /**
+     * @param name nazwa
+     * @param bodyPart część ciała
+     */
     ExerciseType(String name, String bodyPart) {
         this.name = name;
         this.bodyPart = bodyPart;

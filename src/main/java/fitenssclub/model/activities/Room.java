@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Sala, w której mogą odbywać się zajęcia
+ */
 public class Room implements Serializable {
 
     private String number;
@@ -20,6 +23,10 @@ public class Room implements Serializable {
                 '}';
     }
 
+    /**
+     * @param number numer lub nazwa sali
+     * @param capasity pojemność (maksymalna liczba uczestników)
+     */
     public Room(String number, Integer capasity) {
         this.number = number;
         this.capasity = capasity;
