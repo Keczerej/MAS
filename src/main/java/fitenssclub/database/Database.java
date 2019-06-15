@@ -21,10 +21,10 @@ public class Database {
      * Zapisuje stan bazy w pamieci do plików
      * Np. podajac scieżkę /home/test
      * zostaną stworzone pliki
-     * /home/test.udb -> uzytkownicy
-     * /home/test.adb -> zajecia
-     * /home/test.edb -> ćwiczenia
-     * /home/test.rdb -> sale
+     * /home/test.udb - uzytkownicy
+     * /home/test.adb - zajecia
+     * /home/test.edb - ćwiczenia
+     * /home/test.rdb - sale
      *
      * @param filePath sciezka do pliku
      */
@@ -39,10 +39,10 @@ public class Database {
      * Wczytuje stan bazy z plików do pamięci
      * Np. podajac scieżkę /home/test
      * zostaną wczytane pliki
-     * /home/test.udb -> uzytkownicy
-     * /home/test.adb -> zajecia
-     * /home/test.edb -> ćwiczenia
-     * /home/test.rdb -> sale
+     * /home/test.udb - uzytkownicy
+     * /home/test.adb - zajecia
+     * /home/test.edb - ćwiczenia
+     * /home/test.rdb - sale
      *
      * @param filePath sciezka do pliku
      */

@@ -85,7 +85,9 @@ abstract class DatabaseEntity<T extends Serializable> {
     }
 
     /**
-     * Usuwa wszystkie obiekty typu T z pamięci
+     * Usuwa podane obiekty typu T z pamięci
+     *
+     * @param toDelete obiekty do usuniecia
      */
     public void removeAll(List<T> toDelete) {
         this.entities.removeAll(toDelete);
