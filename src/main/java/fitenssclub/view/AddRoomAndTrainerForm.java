@@ -6,11 +6,11 @@ import javax.swing.*;
 import java.util.List;
 
 public class AddRoomAndTrainerForm extends AbstractView {
+    JPanel addPanel;
     private JComboBox<RoomDTO> chooseRoom;
     private JComboBox<ITrainerDTO> chooseTrainer;
     private JButton anulujButton;
     private JButton zapiszButton;
-    JPanel addPanel;
     private ActivityDTO activityDTO;
 
     AddRoomAndTrainerForm(MainController mainController) {

@@ -21,9 +21,7 @@ public class ActivityList extends AbstractView {
         DefaultListModel<Activity> model = new DefaultListModel<>();
         Database.getActivities().forEach(activity -> {
             System.out.println(activity);
-            ActivityItem activityItem = new ActivityItem();
             model.addElement(activity);
-            activityItem.load(activity);
         });
         listOfActivities.setModel(model);
         listOfActivities.setCellRenderer(new ActivityItemRenderer());

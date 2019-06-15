@@ -55,11 +55,6 @@ public class AddNewActivityForm extends AbstractView {
         return rooms;
     }
 
-    private boolean isBetween(LocalDateTime min, LocalDateTime max, Activity activity) {
-        return isTimeBetween(min, max, activity.getDate()) ||
-        isTimeBetween(min, max, activity.getDate().plusMinutes(activity.getExercisesTime()));
-    }
-
     private List<ITrainerDTO> getTrainers(LocalDateTime min, LocalDateTime max) {
         List<ITrainerDTO> trainers = Database.getUsers()
                 .stream()
@@ -74,7 +69,12 @@ public class AddNewActivityForm extends AbstractView {
         return trainers;
     }
 
-    public boolean isTimeBetween(final LocalDateTime min, final LocalDateTime max, final LocalDateTime time){
+    private boolean isBetween(LocalDateTime min, LocalDateTime max, Activity activity) {
+        return isTimeBetween(min, max, activity.getDate()) ||
+        isTimeBetween(min, max, activity.getDate().plusMinutes(activity.getExercisesTime()));
+    }
+
+    private boolean isTimeBetween(final LocalDateTime min, final LocalDateTime max, final LocalDateTime time){
         return !(time.isBefore(min) || time.isBefore(max));
     }
 
