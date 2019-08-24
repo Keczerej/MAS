@@ -12,7 +12,16 @@ public class ClientDTO  {
     }
 
     public static String getDetailsString(Client contributor) {
-        return contributor.toString(); //TODO
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Login: " + contributor.getLogin() + "\n");
+        stringBuilder.append("Wiek: " + contributor.getAge() + "\n");
+        if(contributor.getAddresses().size() > 0){
+            stringBuilder.append("Adres: \n");
+            contributor.getAddresses().forEach(address ->
+                    stringBuilder.append("  " + address.getCity() + ", " + address.getAddress())
+            );
+        }
+        return stringBuilder.toString();
     }
 
     @Override

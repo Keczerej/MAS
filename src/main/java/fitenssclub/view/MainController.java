@@ -94,12 +94,19 @@ class MainController {
 
     void showExerciseDetails(Exercise exercise) {
         String message = ExerciseDTO.getDetailsString(exercise);
-        JOptionPane.showMessageDialog(FRAME, message, "Informacje o ćwieczeniu \"" + exercise.getName() + "\"", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(FRAME, message,
+                "Informacje o ćwieczeniu \""
+                        + exercise.getName()
+                        + "\"", JOptionPane.INFORMATION_MESSAGE);
     }
 
     void showContributorsList(Client contributor) {
         String message = ClientDTO.getDetailsString(contributor);
-        JOptionPane.showMessageDialog(FRAME, message, "Informacje o uczestniku \"" + contributor.getFirstName() + " " + contributor.getLastName() + "\"", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(FRAME, message,
+                "Informacje o uczestniku \""
+                + contributor.getFirstName() + " "
+                + contributor.getLastName()
+                + "\"", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }

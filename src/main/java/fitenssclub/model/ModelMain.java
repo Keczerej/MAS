@@ -55,12 +55,14 @@ public class ModelMain {
     private static void createDatabase(String filesPath) {
         System.out.println("## Dodaję dane do pliku " + filesPath + "\n\n");
         Client client = new Client(
-                "keczerej",
+                "buziaczek123",
                 "trudneHaslo",
                 "Kasia",
                 "Nowak",
+                "Gdańsk",
+                "Krakowska 123a",
                 LocalDate.parse("16-07-1976", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
-        );//Kompozycja
+                );//Kompozycja
         System.out.println("1. Dodany klient");
         System.out.println(client);
 
@@ -161,7 +163,7 @@ public class ModelMain {
         );
 
 
-        Activity newActivity = new Activity("Nowe zajęcia", LocalDateTime.parse("2016-12-27T08:15:05", DateTimeFormatter.ISO_LOCAL_DATE_TIME), bartek, manager, new Room("p107", 30));
+        Activity newActivity = new Activity("Crossfit", LocalDateTime.parse("2016-12-27T08:15:05", DateTimeFormatter.ISO_LOCAL_DATE_TIME), bartek, manager, new Room("p107", 30));
         newActivity.addContributor(client);
         newActivity.addExercise(joga, 20);
         System.out.println(bartek);

@@ -29,18 +29,22 @@ public class ExerciseDTO {
 
     static String getDetailsString(Exercise exercise) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Typ: \n");
-        exercise.getTypes().forEach(type ->
-                stringBuilder.append("   " + type.name + "\n")
-        );
-        stringBuilder.append("Części ciała: \n");
-        exercise.getTypes().forEach(type ->
-                stringBuilder.append("   " + type.bodyPart + "\n")
-        );
-        stringBuilder.append("Akcesoria:\n");
-        exercise.getEquipmentList().forEach(equipment ->
-                stringBuilder.append("   " + equipment.getName() + "\n")
-        );
+        if(exercise.getTypes().size() > 0) {
+            stringBuilder.append("Typ: \n");
+            exercise.getTypes().forEach(type ->
+                    stringBuilder.append("   " + type.name + "\n")
+            );
+            stringBuilder.append("Części ciała: \n");
+            exercise.getTypes().forEach(type ->
+                    stringBuilder.append("   " + type.bodyPart + "\n")
+            );
+        }
+        if(exercise.getEquipmentList().size() > 0) {
+            stringBuilder.append("Akcesoria:\n");
+            exercise.getEquipmentList().forEach(equipment ->
+                    stringBuilder.append("   " + equipment.getName() + "\n")
+            );
+        }
         return stringBuilder.toString();
     }
 
