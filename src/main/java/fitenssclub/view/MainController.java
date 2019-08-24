@@ -1,7 +1,7 @@
 package fitenssclub.view;
 
 import fitenssclub.database.Database;
-import fitenssclub.model.users.User;
+import fitenssclub.model.activities.Activity;
 import fitenssclub.model.users.worker.roles.Manager;
 
 import javax.swing.*;
@@ -68,6 +68,13 @@ class MainController {
         MainController.FRAME.validate();
         addRoomAndTrainerForm.load(activityDTO, trainerList, roomList);
 
+    }
+
+    void openActivityDetails(Activity activity){
+        ActivityDetails activityDetails = new ActivityDetails(this);
+        MainController.FRAME.setContentPane(activityDetails.activityDetailsPanel);
+        MainController.FRAME.validate();
+        activityDetails.load(activity);
     }
 
     void pack() {
