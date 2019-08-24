@@ -1,5 +1,7 @@
 package fitenssclub.database;
 
+import fitenssclub.model.activities.Activity;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -92,4 +94,5 @@ abstract class DatabaseEntity<T extends Serializable> {
     public void removeAll(List<T> toDelete) {
         this.entities.removeAll(toDelete);
     };
+
 }

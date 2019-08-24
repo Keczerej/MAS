@@ -1,11 +1,13 @@
 package fitenssclub.view;
 
+import fitenssclub.database.Database;
 import fitenssclub.model.activities.Activity;
 import fitenssclub.model.activities.Exercise;
 import fitenssclub.model.users.User;
 import fitenssclub.model.users.client.Client;
 
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -34,9 +36,25 @@ public class ActivityDetails extends AbstractView {
         this.activity = activity;
         setExercisesList(activity);
         setContributorsList(activity);
+        setReturnButton();
+        setDeleteButton(activity);
+    }
+
+    private void setReturnButton() {
         returnButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                mainController.openActivityList();
+            }
+        });
+    }
+
+    private void setDeleteButton(Activity activity) {
+        deleteButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Database.deleteActivity(activity);
+                mainController.saveStateToDatabase();
                 mainController.openActivityList();
             }
         });

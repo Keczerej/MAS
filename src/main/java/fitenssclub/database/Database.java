@@ -5,6 +5,8 @@ import fitenssclub.model.activities.Exercise;
 import fitenssclub.model.activities.Room;
 import fitenssclub.model.users.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -57,16 +59,40 @@ public class Database {
         return userEntity.getEntities();
     }
 
+    public static void deleteUser(User user) {
+        List<User> toDelete = new ArrayList<>();
+        toDelete.add(user);
+        userEntity.removeAll(toDelete);
+    }
+
     public static Set<Room> getRooms() {
         return roomEntity.getEntities();
+    }
+
+    public static void deleteRoom(Room room) {
+        List<Room> toDelete = new ArrayList<>();
+        toDelete.add(room);
+        roomEntity.removeAll(toDelete);
     }
 
     public static Set<Activity> getActivities() {
         return activityEntity.getEntities();
     }
 
+    public static void deleteActivity(Activity activity) {
+        List<Activity> toDelete = new ArrayList<>();
+        toDelete.add(activity);
+        activityEntity.removeAll(toDelete);
+    }
+
     public static Set<Exercise> getExercises() {
         return exerciseEntity.getEntities();
+    }
+
+    public static void deleteExercise(Exercise exercise) {
+        List<Exercise> toDelete = new ArrayList<>();
+        toDelete.add(exercise);
+        exerciseEntity.removeAll(toDelete);
     }
 
 }
