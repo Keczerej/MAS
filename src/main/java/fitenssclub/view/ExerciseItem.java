@@ -3,7 +3,10 @@ package fitenssclub.view;
 import fitenssclub.model.activities.Exercise;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Widok pojedynczego zajęcia na liście
@@ -14,7 +17,7 @@ class ExerciseItem {
     private JSpinner time;
     private Exercise exercise;
 
-    void load(ExerciseDTO exercise, JPanel jpanel) {
+    void load(ExerciseDTO exercise, JPanel jpanel, MainController mainController) {
         this.exercise = exercise.exercise;
         JPanel exercisePanel = new JPanel();
         exercisePanel.setLayout(new GridLayout(1, 2, 10, 10));
@@ -28,6 +31,13 @@ class ExerciseItem {
         exercisePanel.add(name);
         exercisePanel.add(time);
         jpanel.add(exercisePanel);
+        this.name.setBorder(new EmptyBorder(5,5,5,5));
+        this.name.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                mainController.showExerciseDetails(exercise.exercise);
+            }
+        });
     }
 
     ExerciseDTO createExerciseDTO() {

@@ -2,7 +2,10 @@ package fitenssclub.view;
 
 import fitenssclub.database.Database;
 import fitenssclub.model.activities.Activity;
+import fitenssclub.model.activities.Exercise;
+import fitenssclub.model.users.client.Client;
 import fitenssclub.model.users.worker.roles.Manager;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -87,5 +90,12 @@ class MainController {
 
     void showError(String message) {
         JOptionPane.showMessageDialog(FRAME, message);
+    }
+
+    void showExerciseDetails(Exercise exercise) {
+        throw new NotImplementedException();
+    }
+    void showContributorsList(Client contributor) {
+        throw new NotImplementedException();
     }
 }

@@ -29,12 +29,7 @@ public class ExerciseDTO {
 
     @Override
     public String toString() {
-        return "ExerciseDTO{" +
-                "isSelected=" + isSelected +
-                ", name='" + name + '\'' +
-                ", time=" + time +
-                ", exercise=" + exercise +
-                '}';
+        return "Nazwa: " + name + ", czas trwania: " + time + " [min]";
     }
 
 }

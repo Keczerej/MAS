@@ -107,7 +107,7 @@ public class AddNewActivityForm extends AbstractView {
         exerciseList.forEach(exercise -> {
             System.out.println(exercise);
             ExerciseItem exerciseItem = new ExerciseItem();
-            exerciseItem.load(exercise, this.exerciseList);
+            exerciseItem.load(exercise, this.exerciseList, this.mainController);
             this.exerciseItems.add(exerciseItem);
         });
     }

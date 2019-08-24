@@ -57,8 +57,8 @@ public class ModelMain {
         Client client = new Client(
                 "keczerej",
                 "trudneHaslo",
-                "Piotr",
-                "Jereczek",
+                "Kasia",
+                "Nowak",
                 LocalDate.parse("16-07-1976", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
         );//Kompozycja
         System.out.println("1. Dodany klient");
