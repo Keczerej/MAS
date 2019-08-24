@@ -149,6 +149,7 @@ public class Activity implements Serializable {
     }
 
     /**
+     * @param  exercise ćwiczenie, którego czas chcemy poznać
      * @return zwraca czas wykonywania danego ćwiczenia (0 gdy ćwiczenie nie jesy wykonywane w ramach danej aktywności)
      */
     public Long getExerciseTime(Exercise exercise) {
