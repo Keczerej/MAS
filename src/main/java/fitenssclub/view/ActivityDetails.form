@@ -45,7 +45,7 @@
           <text value="Trener"/>
         </properties>
       </component>
-      <component id="d860" class="javax.swing.JLabel">
+      <component id="d860" class="javax.swing.JLabel" binding="trainer">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -61,7 +61,7 @@
           <text value="Pokój"/>
         </properties>
       </component>
-      <component id="ef71d" class="javax.swing.JLabel">
+      <component id="ef71d" class="javax.swing.JLabel" binding="room">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -109,7 +109,7 @@
           <text value="Kierownik planujący"/>
         </properties>
       </component>
-      <component id="5df3f" class="javax.swing.JLabel">
+      <component id="5df3f" class="javax.swing.JLabel" binding="menager">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

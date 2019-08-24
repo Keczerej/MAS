@@ -12,6 +12,7 @@ class ActivityItemDTO {
     final String to;
     final String room;
     final String trainer;
+    final String menager;
 
     ActivityItemDTO() {
         this.name = "Nazwa";
@@ -19,6 +20,7 @@ class ActivityItemDTO {
         this.to = "Do kiedy";
         this.room = "Pokój";
         this.trainer = "Trener";
+        this.menager = "Menadżer";
     }
 
     ActivityItemDTO(Activity activity) {
@@ -28,6 +30,7 @@ class ActivityItemDTO {
         this.room = activity.getRoom().getNumber();
         User user = ((User) activity.getTrainer());
         this.trainer = user.getFirstName() + " " + user.getLastName();
+        this.menager = activity.getManager().getFirstName() + " " + activity.getManager().getLastName();
     }
 
     private String toDateString(LocalDateTime localDateTime) {

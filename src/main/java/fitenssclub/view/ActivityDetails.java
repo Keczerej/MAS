@@ -17,13 +17,15 @@ public class ActivityDetails extends AbstractView {
 
     JPanel activityDetailsPanel;
     private JButton deleteButton;
-    private JLabel name;
-    private JLabel from;
-    private JLabel to;
     private JList<ExerciseDTO> exerciseList;
     private JList<ClientDTO> contributorsList;
     private JButton returnButton;
-    private Activity activity;
+    private JLabel name;
+    private JLabel from;
+    private JLabel to;
+    private JLabel trainer;
+    private JLabel room;
+    private JLabel menager;
 
     /**
      * @param mainController główny kontroler widoków w aplikacji
@@ -33,11 +35,20 @@ public class ActivityDetails extends AbstractView {
     }
 
     void load(Activity activity) {
-        this.activity = activity;
+        setDetails(new ActivityItemDTO(activity));
         setExercisesList(activity);
         setContributorsList(activity);
         setReturnButton();
         setDeleteButton(activity);
+    }
+
+    private void setDetails(ActivityItemDTO activity) {
+        name.setText(activity.name);
+        from.setText(activity.from);
+        to.setText(activity.to);
+        trainer.setText(activity.trainer);
+        room.setText(activity.room);
+        menager.setText(activity.menager);
     }
 
     private void setReturnButton() {
