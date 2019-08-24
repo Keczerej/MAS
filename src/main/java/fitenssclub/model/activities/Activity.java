@@ -3,6 +3,7 @@ package fitenssclub.model.activities;
 import fitenssclub.database.ActivityEntity;
 import fitenssclub.model.users.client.Client;
 import fitenssclub.model.users.worker.roles.ITrainer;
+import fitenssclub.model.users.worker.roles.Manager;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ public class Activity implements Serializable {
     private String name;
     private LocalDateTime date;
     private ITrainer trainer;
+    private Manager manager;
     private Room room;
 
     private Map<String, Client> contributors = new HashMap<>();
@@ -28,12 +30,14 @@ public class Activity implements Serializable {
      * @param name Nazwa zajęć
      * @param date Czas rozpoczęcia
      * @param trainer Przypisany trener
+     * @param manager Menadżer który zaplanował zajęcia
      * @param room Sala, w której się odbywają
      */
-    public Activity(String name, LocalDateTime date, ITrainer trainer, Room room) {
+    public Activity(String name, LocalDateTime date, ITrainer trainer, Manager manager, Room room) {
         this.name = name;
         this.date = date;
         this.trainer = trainer;
+        this.manager = manager;
         this.room = room;
         room.addActivity(this);
         ActivityEntity.getInstance().remove(this);

@@ -25,6 +25,7 @@ public class AddRoomAndTrainerForm extends AbstractView {
                     activityDTO.name,
                     activityDTO.startTime,
                     ((ITrainerDTO) chooseTrainer.getSelectedItem()).trainer,
+                    LoginController.getLoggedManager(),
                     ((RoomDTO) chooseRoom.getSelectedItem()).room);
             this.activityDTO.exerciseList.forEach(exerciseDTO -> {
                 if(exerciseDTO.isSelected) {

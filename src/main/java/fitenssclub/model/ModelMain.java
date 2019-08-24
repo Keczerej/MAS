@@ -64,6 +64,18 @@ public class ModelMain {
         System.out.println("1. Dodany klient");
         System.out.println(client);
 
+        Manager manager = new Manager(
+                "keczerej",
+                "keczerej",
+                "Piotr",
+                "Jereczek",
+                "Legionowo",
+                "Górnośląska",
+                LocalDate.parse("16-07-1976", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
+        );
+        System.out.println("1a. Dodany manadżer");
+        System.out.println(manager);
+
         Set<String> specialisations = new HashSet<>();
         specialisations.add("Karate");
         Trainer trainer = new Trainer(
@@ -82,7 +94,7 @@ public class ModelMain {
         System.out.println("Forma zatrudnienia: " + trainer.getWorkFormName());
 
         Room r106 = new Room("p106", 10);
-        Activity activity = new Activity("Joga", LocalDateTime.now(), trainer, r106);
+        Activity activity = new Activity("Joga", LocalDateTime.now(), trainer, manager, r106);
         Exercise joga = new Exercise("pompki", EnumSet.of(ExerciseType.Strength));
         Equipment kula = new Equipment("kula");
         Equipment hantle = new Equipment("hantle");
@@ -149,7 +161,7 @@ public class ModelMain {
         );
 
 
-        Activity newActivity = new Activity("Nowe zajęcia", LocalDateTime.now(), bartek, new Room("p107", 30));
+        Activity newActivity = new Activity("Nowe zajęcia", LocalDateTime.now(), bartek, manager, new Room("p107", 30));
         newActivity.addContributor(client);
         newActivity.addExercise(joga, 20);
         System.out.println(bartek);

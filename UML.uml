@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>fitenssclub.users.worker.roles.Trainer</OriginalElement>
+  <nodes>
+    <node x="737.75" y="585.0">fitenssclub.users.worker.form.UoP</node>
+    <node x="1303.75" y="241.0">fitenssclub.activities.Exercise</node>
+    <node x="521.75" y="175.0">fitenssclub.activities.Activity</node>
+    <node x="1958.8108695652172" y="585.5">fitenssclub.users.client.Client</node>
+    <node x="1582.75" y="252.0">fitenssclub.activities.ActivityToExercise</node>
+    <node x="1721.4166666666667" y="797.5">fitenssclub.users.worker.roles.Manager</node>
+    <node x="847.75" y="230.0">fitenssclub.users.worker.form.WorkForm</node>
+    <node x="1053.25" y="585.0">fitenssclub.users.worker.form.B2B</node>
+    <node x="1404.4166666666665" y="943.0">fitenssclub.users.worker.roles.Trainer</node>
+    <node x="1084.1652173913044" y="11.0">java.io.Serializable</node>
+    <node x="1841.4166666666667" y="797.5">fitenssclub.users.worker.roles.Receptionist</node>
+    <node x="88.75" y="618.5">fitenssclub.activities.ExerciseType</node>
+    <node x="15.75" y="175.0">java.lang.Enum</node>
+    <node x="1455.4166666666665" y="753.0">fitenssclub.users.worker.roles.ITrainer</node>
+    <node x="1656.1456521739128" y="563.0">fitenssclub.users.worker.Worker</node>
+    <node x="1803.75" y="131.0">fitenssclub.users.User</node>
+    <node x="0.0" y="0.0">java.lang.Comparable</node>
+    <node x="1692.4166666666667" y="943.0">fitenssclub.users.worker.roles.TrainerReceptionist</node>
+    <node x="1129.75" y="263.0">fitenssclub.users.Address</node>
+    <node x="296.75" y="274.0">fitenssclub.activities.Equipment</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="fitenssclub.users.worker.roles.Trainer" target="fitenssclub.users.worker.Worker">
+      <point x="-38.25" y="-37.0" />
+      <point x="1442.6666666666665" y="918.0" />
+      <point x="1444.9166666666667" y="918.0" />
+      <point x="1444.9166666666667" y="728.0" />
+      <point x="1695.8123188405796" y="728.0" />
+      <point x="-79.33333333333326" y="70.0" />
+    </edge>
+    <edge source="fitenssclub.users.worker.Worker" target="fitenssclub.users.User">
+      <point x="0.0" y="-70.0" />
+      <point x="1775.1456521739128" y="538.0" />
+      <point x="1862.0" y="538.0" />
+      <point x="-58.25" y="191.0" />
+    </edge>
+    <edge source="fitenssclub.activities.Equipment" target="java.io.Serializable">
+      <point x="0.0" y="-48.0" />
+      <point x="399.25" y="81.0" />
+      <point x="1100.0652173913045" y="81.0" />
+      <point x="-37.10000000000002" y="14.5" />
+    </edge>
+    <edge source="fitenssclub.users.worker.roles.Manager" target="fitenssclub.users.worker.Worker">
+      <point x="0.0" y="-25.5" />
+      <point x="1771.4166666666667" y="728.0" />
+      <point x="1775.1456521739128" y="728.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="fitenssclub.users.worker.roles.Trainer" target="fitenssclub.users.worker.roles.ITrainer">
+      <point x="38.25" y="-37.0" />
+      <point x="1519.1666666666665" y="918.0" />
+      <point x="1516.9166666666665" y="918.0" />
+      <point x="-61.5" y="70.0" />
+    </edge>
+    <edge source="fitenssclub.activities.ExerciseType" target="java.lang.Enum">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="147.0" />
+    </edge>
+    <edge source="fitenssclub.users.worker.form.B2B" target="fitenssclub.users.worker.form.WorkForm">
+      <point x="-57.75" y="-48.0" />
+      <point x="1111.0" y="538.0" />
+      <point x="1044.25" y="538.0" />
+      <point x="65.5" y="92.0" />
+    </edge>
+    <edge source="fitenssclub.users.User" target="java.io.Serializable">
+      <point x="0.0" y="-191.0" />
+      <point x="1920.25" y="71.0" />
+      <point x="1184.8652173913044" y="71.0" />
+      <point x="47.69999999999993" y="14.5" />
+    </edge>
+    <edge source="fitenssclub.users.worker.form.WorkForm" target="java.io.Serializable">
+      <point x="0.0" y="-92.0" />
+      <point x="978.75" y="111.0" />
+      <point x="1131.8652173913044" y="111.0" />
+      <point x="-5.300000000000068" y="14.5" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.Comparable">
+      <point x="-65.25" y="-147.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="fitenssclub.users.worker.roles.Receptionist" target="fitenssclub.users.worker.Worker">
+      <point x="0.0" y="-25.5" />
+      <point x="1897.9166666666667" y="728.0" />
+      <point x="1854.478985507246" y="728.0" />
+      <point x="79.33333333333326" y="70.0" />
+    </edge>
+    <edge source="fitenssclub.users.client.Client" target="fitenssclub.users.User">
+      <point x="0.0" y="-47.5" />
+      <point x="2070.310869565217" y="538.0" />
+      <point x="1978.5" y="538.0" />
+      <point x="58.25" y="191.0" />
+    </edge>
+    <edge source="fitenssclub.users.worker.roles.TrainerReceptionist" target="fitenssclub.users.worker.roles.ITrainer">
+      <point x="-38.25" y="-37.0" />
+      <point x="1730.6666666666667" y="918.0" />
+      <point x="1639.9166666666665" y="918.0" />
+      <point x="61.5" y="70.0" />
+    </edge>
+    <edge source="fitenssclub.activities.Exercise" target="java.io.Serializable">
+      <point x="0.0" y="-81.0" />
+      <point x="1433.25" y="91.0" />
+      <point x="1163.6652173913044" y="91.0" />
+      <point x="26.5" y="14.5" />
+    </edge>
+    <edge source="fitenssclub.users.worker.roles.TrainerReceptionist" target="fitenssclub.users.worker.roles.Receptionist">
+      <point x="38.25" y="-37.0" />
+      <point x="1807.1666666666667" y="918.0" />
+      <point x="1897.9166666666667" y="918.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="fitenssclub.activities.ActivityToExercise" target="java.io.Serializable">
+      <point x="0.0" y="-70.0" />
+      <point x="1683.25" y="81.0" />
+      <point x="1174.2652173913045" y="81.0" />
+      <point x="37.10000000000002" y="14.5" />
+    </edge>
+    <edge source="fitenssclub.users.Address" target="java.io.Serializable">
+      <point x="0.0" y="-59.0" />
+      <point x="1206.25" y="111.0" />
+      <point x="1142.4652173913046" y="111.0" />
+      <point x="5.2999999999999545" y="14.5" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.io.Serializable">
+      <point x="65.25" y="-147.0" />
+      <point x="211.5" y="71.0" />
+      <point x="1089.4652173913046" y="71.0" />
+      <point x="-47.700000000000045" y="14.5" />
+    </edge>
+    <edge source="fitenssclub.users.worker.form.B2B" target="java.io.Serializable">
+      <point x="57.75" y="-48.0" />
+      <point x="1226.5" y="538.0" />
+      <point x="1293.25" y="538.0" />
+      <point x="1293.25" y="101.0" />
+      <point x="1153.0652173913045" y="101.0" />
+      <point x="15.899999999999977" y="14.5" />
+    </edge>
+    <edge source="fitenssclub.users.worker.form.UoP" target="fitenssclub.users.worker.form.WorkForm">
+      <point x="57.75" y="-48.0" />
+      <point x="911.0" y="538.0" />
+      <point x="913.25" y="538.0" />
+      <point x="-65.5" y="92.0" />
+    </edge>
+    <edge source="fitenssclub.activities.Activity" target="java.io.Serializable">
+      <point x="0.0" y="-147.0" />
+      <point x="663.25" y="91.0" />
+      <point x="1110.6652173913044" y="91.0" />
+      <point x="-26.5" y="14.5" />
+    </edge>
+    <edge source="fitenssclub.users.worker.form.UoP" target="java.io.Serializable">
+      <point x="-57.75" y="-48.0" />
+      <point x="795.5" y="538.0" />
+      <point x="815.25" y="538.0" />
+      <point x="815.25" y="101.0" />
+      <point x="1121.2652173913045" y="101.0" />
+      <point x="-15.899999999999977" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="610.2222222222222" y="555.1111111111111" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
