@@ -161,7 +161,7 @@ public class ModelMain {
         );
 
 
-        Activity newActivity = new Activity("Nowe zajęcia", LocalDateTime.now(), bartek, manager, new Room("p107", 30));
+        Activity newActivity = new Activity("Nowe zajęcia", LocalDateTime.parse("2016-12-27T08:15:05", DateTimeFormatter.ISO_LOCAL_DATE_TIME), bartek, manager, new Room("p107", 30));
         newActivity.addContributor(client);
         newActivity.addExercise(joga, 20);
         System.out.println(bartek);

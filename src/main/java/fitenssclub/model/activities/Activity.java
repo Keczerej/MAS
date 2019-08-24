@@ -179,6 +179,21 @@ public class Activity implements Serializable {
     public void setRoom(Room room) {
         this.room = room;
     }
-    
+
+    /**
+     * @return zwraca menadżera, któy zaplanował dane zajęcia
+     */
+    public Manager getManager() {
+        return manager;
+    }
+
+    /**
+     * Ustawia nowego menadżera dla zajęć
+     *
+     * @param manager nowy manadżer, któy zaplanował zajęcia
+     */
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
 }
 
