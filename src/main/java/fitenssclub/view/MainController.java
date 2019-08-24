@@ -1,10 +1,14 @@
 package fitenssclub.view;
 
 import fitenssclub.database.Database;
+import fitenssclub.model.users.User;
+import fitenssclub.model.users.worker.roles.Manager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +27,7 @@ class MainController {
         FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         FRAME.pack();
         FRAME.setVisible(true);
-        openMainMenu();
+        openMainMenu(LoginController.getLoggedManager());
     }
 
     void openActivityList() {
@@ -33,9 +37,11 @@ class MainController {
         activityList.loadActivities();
     }
 
-    void openMainMenu() {
-        MainController.FRAME.setContentPane(new MainMenu(this).panelMain);
+    void openMainMenu(Manager loggedUser) {
+        MainMenu mainMenu = new MainMenu(this);
+        MainController.FRAME.setContentPane(mainMenu.panelMain);
         MainController.FRAME.validate();
+        mainMenu.load(loggedUser);
     }
 
 

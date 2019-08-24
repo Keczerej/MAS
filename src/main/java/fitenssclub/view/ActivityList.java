@@ -18,7 +18,7 @@ public class ActivityList extends AbstractView {
     ActivityList(MainController mainController) {
         super(mainController);
         dodajNoweZajeciaButton.addActionListener(e -> mainController.openAddNewActivity());
-        anulujButton.addActionListener(actionEvent -> mainController.openMainMenu());
+        anulujButton.addActionListener(actionEvent -> mainController.openMainMenu(LoginController.getLoggedManager()));
     }
 
     void loadActivities() {

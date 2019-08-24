@@ -183,7 +183,9 @@ public class ModelMain {
         new Exercise("rozciąganie", EnumSet.of(ExerciseType.Aerobic));
         new Exercise("piłka", EnumSet.of(ExerciseType.Aerobic));
 
+
         new Room("p101a", 15);
+        new Room("p107", 20);
     }
 
 }
