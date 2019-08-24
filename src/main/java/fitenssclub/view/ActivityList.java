@@ -1,9 +1,10 @@
 package fitenssclub.view;
 
 import fitenssclub.database.Database;
-import fitenssclub.model.activities.Activity;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 /**
@@ -11,7 +12,7 @@ import javax.swing.*;
  */
 public class ActivityList extends AbstractView {
     JPanel activityPanel;
-    private JList<Activity> listOfActivities;
+    private JList<ActivityItemDTO> listOfActivities;
     private JButton dodajNoweZajeciaButton;
     private JButton anulujButton;
 
@@ -22,14 +23,26 @@ public class ActivityList extends AbstractView {
     }
 
     void loadActivities() {
-        DefaultListModel<Activity> model = new DefaultListModel<>();
+        this.listOfActivities.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        DefaultListModel<ActivityItemDTO> model = new DefaultListModel<>();
+        model.addElement(new ActivityItemDTO());
         Database.getActivities().forEach(activity -> {
             System.out.println(activity);
-            model.addElement(activity);
+            model.addElement(new ActivityItemDTO(activity));
         });
         listOfActivities.setModel(model);
         listOfActivities.setCellRenderer(new ActivityItemRenderer());
         listOfActivities.updateUI();
+        listOfActivities.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                JList list = (JList)evt.getSource();
+                int index = list.locationToIndex(evt.getPoint());
+                if(index > 0) {
+                    mainController.showError(index + "");
+                }
+            }
+        });
     }
 
 }
