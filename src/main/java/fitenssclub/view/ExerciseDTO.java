@@ -27,6 +27,23 @@ public class ExerciseDTO {
         this.exercise = exercise;
     }
 
+    static String getDetailsString(Exercise exercise) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Typ: \n");
+        exercise.getTypes().forEach(type ->
+                stringBuilder.append("   " + type.name + "\n")
+        );
+        stringBuilder.append("Części ciała: \n");
+        exercise.getTypes().forEach(type ->
+                stringBuilder.append("   " + type.bodyPart + "\n")
+        );
+        stringBuilder.append("Akcesoria:\n");
+        exercise.getEquipmentList().forEach(equipment ->
+                stringBuilder.append("   " + equipment.getName() + "\n")
+        );
+        return stringBuilder.toString();
+    }
+
     @Override
     public String toString() {
         return "Nazwa: " + name + ", czas trwania: " + time + " [min]";

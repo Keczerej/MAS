@@ -6,11 +6,11 @@ package fitenssclub.model.activities;
  */
 public enum ExerciseType {
     Relax("Relaksacyjne", "Kręgosłup"),
-    Strength("Siłowe", "Triceps+Biceps"),
+    Strength("Siłowe", "Triceps"),
     Aerobic("Aerobowe", "Brzuch");
 
-    private final String name;
-    private final String bodyPart;
+    public final String name;
+    public final String bodyPart;
 
     @Override
     public String toString() {

@@ -11,6 +11,10 @@ public class ClientDTO  {
         this.client = client;
     }
 
+    public static String getDetailsString(Client contributor) {
+        return contributor.toString(); //TODO
+    }
+
     @Override
     public String toString() {
         return this.client.getFirstName() + " " + this.client.getLastName();
