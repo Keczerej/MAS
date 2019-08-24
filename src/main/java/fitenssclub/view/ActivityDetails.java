@@ -77,7 +77,7 @@ public class ActivityDetails extends AbstractView {
         List<ExerciseDTO> exercises = activity
                 .getExercises()
                 .stream()
-                .map(ExerciseDTO::new)
+                .map(it -> new ExerciseDTO(it, activity.getExerciseTime(it)))
                 .collect(Collectors.toList());
         exercises.forEach(model::addElement);
         exerciseList.setModel(model);

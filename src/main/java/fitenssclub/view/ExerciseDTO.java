@@ -10,17 +10,17 @@ public class ExerciseDTO {
 
     final boolean isSelected;
     public final String name;
-    public final Integer time;
+    public final Long time;
     public final Exercise exercise;
 
-    ExerciseDTO(Exercise exercise) {
+    ExerciseDTO(Exercise exercise, Long time) {
         this.exercise = exercise;
         this.isSelected = false;
         this.name = exercise.getName();
-        this.time = 10;
+        this.time = time;
     }
 
-    ExerciseDTO(boolean isSelected, String name, Integer time, Exercise exercise) {
+    ExerciseDTO(boolean isSelected, String name, Long time, Exercise exercise) {
         this.isSelected = isSelected;
         this.name = name;
         this.time = time;

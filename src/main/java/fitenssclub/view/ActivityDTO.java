@@ -39,8 +39,8 @@ class ActivityDTO {
             throw new IllegalArgumentException("Nie wybrano żadnych ćwiczeń.");
     }
 
-    private int getTimeOfSelectedExercises() {
-        return this.exerciseList.stream().filter(it -> it.isSelected).map(it -> it.time).mapToInt(Integer::intValue).sum();
+    private long getTimeOfSelectedExercises() {
+        return this.exerciseList.stream().filter(it -> it.isSelected).map(it -> it.time).mapToLong(Long::longValue).sum();
     }
 
     LocalDateTime getEndTime() {

@@ -53,7 +53,7 @@ class MainController {
         ActivityDTO activityDTO = new ActivityDTO(
                 "",
                 LocalDateTime.now(),
-                Database.getExercises().stream().map(ExerciseDTO::new).collect(Collectors.toList())
+                Database.getExercises().stream().map(it -> new ExerciseDTO(it, 10L)).collect(Collectors.toList())
         );
         addNewActivityForm.load(activityDTO);
     }

@@ -41,12 +41,21 @@ class ExerciseItem {
     }
 
     ExerciseDTO createExerciseDTO() {
-        return new ExerciseDTO(
-                selected.isSelected(),
-                name.getText(),
-                (Integer) time.getValue(),
-                exercise
-        );
+        if(time.getValue() instanceof  Long){
+            return new ExerciseDTO(
+                    selected.isSelected(),
+                    name.getText(),
+                    (Long) time.getValue(),
+                    exercise
+            );
+        } else {
+            return new ExerciseDTO(
+                    selected.isSelected(),
+                    name.getText(),
+                    ((Integer) time.getValue()).longValue(),
+                    exercise
+            );
+        }
     }
 
 }

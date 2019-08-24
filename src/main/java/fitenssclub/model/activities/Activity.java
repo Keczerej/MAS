@@ -149,6 +149,18 @@ public class Activity implements Serializable {
     }
 
     /**
+     * @return zwraca czas wykonywania danego ćwiczenia (0 gdy ćwiczenie nie jesy wykonywane w ramach danej aktywności)
+     */
+    public Long getExerciseTime(Exercise exercise) {
+        return exercises
+                .stream()
+                .filter(it -> it.getExercise() == exercise
+                ).map(ActivityToExercise::getMinutesForExercise)
+                .findAny()
+                .orElse(0L);
+    }
+
+    /**
      * @return zwraca sumę czasu ćwiczeń
      */
     public long getExercisesTime() {
