@@ -120,6 +120,12 @@ public class Activity implements Serializable {
     private Optional<Client> getContributor(String login){
         return Optional.ofNullable(this.contributors.get(login));
     }
+
+
+    /**
+     * Usuwa uczestnika (jeżeli nie istnieje - to nic się nie dzieje)
+     * @param login uczestnik do dodania
+     */
     public void removeContributor(String login){
         Client client = this.contributors.remove(login);
         if(client != null){

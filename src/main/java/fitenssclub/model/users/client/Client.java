@@ -23,7 +23,10 @@ public class Client extends User {
     }
 
     /**
-     * Dodaje użytkownika jako uczestnika zajęć
+     * Dodaje użytkownika jako uczestnika zajęć.
+     *
+     * !! Uwaga nie należy z nie korzystać bezpośrednio, tylko poprzez
+     * metodę addContributor w klasie Activity.
      *
      * @param activity zajecie do dodania
      */
@@ -33,6 +36,9 @@ public class Client extends User {
 
     /**
      * Rezygnuje z uczestnictwa w danych zajęciach
+     *
+     * !! Uwaga nie należy z nie korzystać bezpośrednio, tylko poprzez
+     * metodę removeContributor w klasie Activity.
      *
      * @param activity zajęcia do zrezygnowania
      */
