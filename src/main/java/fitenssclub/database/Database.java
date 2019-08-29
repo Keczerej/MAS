@@ -9,7 +9,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Zarządzanie bazą danych w pamięci oraz zapisywanie/wczytywanie do pliku.
@@ -22,51 +21,39 @@ public class Database {
     private static RoomEntity roomEntity = RoomEntity.getInstance();
 
     /**
-     * Zapisuje stan bazy w pamieci do plików
-     * Np. podajac scieżkę /home/test
-     * zostaną stworzone pliki
-     * /home/test.udb - uzytkownicy
-     * /home/test.adb - zajecia
-     * /home/test.edb - ćwiczenia
-     * /home/test.rdb - sale
+     * Zapisuje stan bazy w pamieci do pliku
      *
      * @param filePath sciezka do pliku
      */
     public static void readFromPath(String filePath) {
         try {
-            ArrayList<Object> entities = (ArrayList<Object>)new ObjectInputStream(
+            ArrayList<Object> database = (ArrayList<Object>)new ObjectInputStream(
                                     new FileInputStream(filePath)
                             ).readObject();
-            userEntity.readFromFile(entities, User.class);
-            activityEntity.readFromFile(entities, Activity.class);
-            exerciseEntity.readFromFile(entities, Exercise.class);
-            roomEntity.readFromFile(entities, Room.class);
+            userEntity.readFromDatabase(database, User.class);
+            activityEntity.readFromDatabase(database, Activity.class);
+            exerciseEntity.readFromDatabase(database, Exercise.class);
+            roomEntity.readFromDatabase(database, Room.class);
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
     /**
-     * Wczytuje stan bazy z plików do pamięci
-     * Np. podajac scieżkę /home/test
-     * zostaną wczytane pliki
-     * /home/test.udb - uzytkownicy
-     * /home/test.adb - zajecia
-     * /home/test.edb - ćwiczenia
-     * /home/test.rdb - sale
+     * Wczytuje stan bazy z pliku do pamięci
      *
      * @param filePath sciezka do pliku
      */
     public static void writeToPath(String filePath) {
-        ArrayList<Object> entities = new ArrayList<>();
-        entities.addAll(userEntity.getEntities());
-        entities.addAll(activityEntity.getEntities());
-        entities.addAll(exerciseEntity.getEntities());
-        entities.addAll(roomEntity.getEntities());
+        ArrayList<Object> database = new ArrayList<>();
+        database.addAll(userEntity.getEntities());
+        database.addAll(activityEntity.getEntities());
+        database.addAll(exerciseEntity.getEntities());
+        database.addAll(roomEntity.getEntities());
         try {
             new ObjectOutputStream(
                     new FileOutputStream(filePath)
-            ).writeObject(new ArrayList<>(entities));
+            ).writeObject(new ArrayList<>(database));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

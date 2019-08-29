@@ -16,13 +16,11 @@ import java.util.stream.Collectors;
  */
 abstract class DatabaseEntity<T extends Serializable> {
 
-    DatabaseEntity() {
-
-    }
+    DatabaseEntity() { }
 
     private Set<T> entities = new HashSet<>();
 
-    void readFromFile(ArrayList<Object> database, Class<T> tClass) {
+    void readFromDatabase(ArrayList<Object> database, Class<T> tClass) {
         entities.addAll(
                 database
                         .stream()
