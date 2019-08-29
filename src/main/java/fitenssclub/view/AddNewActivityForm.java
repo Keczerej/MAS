@@ -79,7 +79,7 @@ public class AddNewActivityForm extends AbstractView {
     }
 
     private boolean isTimeBetween(final LocalDateTime min, final LocalDateTime max, final LocalDateTime time){
-        return !(time.isBefore(min) || time.isBefore(max));
+        return !(time.isBefore(min) || time.isBefore(max)) || time.isEqual(min) || time.isEqual(max);
     }
 
     private Boolean isTrainer(User user) {
