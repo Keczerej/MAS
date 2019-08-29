@@ -5,9 +5,11 @@ import fitenssclub.model.activities.Exercise;
 import fitenssclub.model.activities.Room;
 import fitenssclub.model.users.User;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Zarządzanie bazą danych w pamięci oraz zapisywanie/wczytywanie do pliku.
@@ -31,10 +33,17 @@ public class Database {
      * @param filePath sciezka do pliku
      */
     public static void readFromPath(String filePath) {
-        userEntity.readFromFile(filePath + ".udb");
-        activityEntity.readFromFile(filePath + ".adb");
-        exerciseEntity.readFromFile(filePath + ".edb");
-        roomEntity.readFromFile(filePath + ".rdb");
+        try {
+            ArrayList<Object> entities = (ArrayList<Object>)new ObjectInputStream(
+                                    new FileInputStream(filePath)
+                            ).readObject();
+            userEntity.readFromFile(entities, User.class);
+            activityEntity.readFromFile(entities, Activity.class);
+            exerciseEntity.readFromFile(entities, Exercise.class);
+            roomEntity.readFromFile(entities, Room.class);
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -49,10 +58,18 @@ public class Database {
      * @param filePath sciezka do pliku
      */
     public static void writeToPath(String filePath) {
-        userEntity.writeToFile(filePath + ".udb");
-        activityEntity.writeToFile(filePath + ".adb");
-        exerciseEntity.writeToFile(filePath + ".edb");
-        roomEntity.writeToFile(filePath + ".rdb");
+        ArrayList<Object> entities = new ArrayList<>();
+        entities.addAll(userEntity.getEntities());
+        entities.addAll(activityEntity.getEntities());
+        entities.addAll(exerciseEntity.getEntities());
+        entities.addAll(roomEntity.getEntities());
+        try {
+            new ObjectOutputStream(
+                    new FileOutputStream(filePath)
+            ).writeObject(new ArrayList<>(entities));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static Set<User> getUsers() {

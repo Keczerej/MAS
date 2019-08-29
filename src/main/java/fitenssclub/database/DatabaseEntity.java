@@ -22,41 +22,15 @@ abstract class DatabaseEntity<T extends Serializable> {
 
     private Set<T> entities = new HashSet<>();
 
-    /**
-     * Wczytaj z pliku do pamieci wszystkie obiekty danego typu T
-     *
-     * @param filePath pelna sciezka do pliku
-     */
-    void readFromFile(String filePath) {
-        try {
-            entities.addAll(
-                    (
-                            (List<T>) new ObjectInputStream(
-                                    new FileInputStream(filePath)
-                            ).readObject()
-                    )
-                            .stream()
-                            .filter(it -> !entities.contains(it))
-                            .collect(Collectors.toList())
-            );
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**
-     * Zapisz do pliku z pamieci wszystkie obiekty danego typu T
-     *
-     * @param filePath pelna sciezka do pliku
-     */
-    void writeToFile(String filePath) {
-        try {
-            new ObjectOutputStream(
-                    new FileOutputStream(filePath)
-            ).writeObject(new ArrayList<>(entities));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    void readFromFile(ArrayList<Object> database, Class<T> tClass) {
+        entities.addAll(
+                database
+                        .stream()
+                        .filter(it -> tClass.isAssignableFrom(it.getClass()))
+                        .map(it -> (T) it)
+                        .filter(it -> !entities.contains(it))
+                        .collect(Collectors.toList())
+        );
     }
 
     /**
